@@ -1,6 +1,8 @@
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
+import json
+import sys
 
 ckey = "pF5W6BaHFteEYdkq38cgZ755g"
 csecret = "AwnBHQTmvVr6cMSYKm89vQOXMO3sPyoGvhXMaow3zlg2G74vLq"
@@ -20,14 +22,23 @@ class StreamListener(StreamListener):
         return False
 
     def on_data(self, data):
-        print(data)
+        #db = client.twitterdb
+
+        # Decode the JSON from Twitter
+        datajson = json.loads(data)
+
+        #grab the 'created_at' data from the Tweet to use for display
+        created_at = datajson['created_at']
+
+        #print out a message to the screen that we have collected a tweet
+        print("Tweet collected at " + str(created_at) + datajson['text'])
         return(True)
 
 auth = OAuthHandler(ckey, csecret)
 auth.set_access_token(atoken, asecret)
 
 twitterStream = Stream(auth, StreamListener())
-twitterStream.filter(track=["#NFL"])
+twitterStream.filter(track=[sys.argv[1]])
 '''
     def on_data(self, data):
         #This is the meat of the script...it connects to your mongoDB and stores the tweet
