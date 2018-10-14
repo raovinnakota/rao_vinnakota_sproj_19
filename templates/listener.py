@@ -26,19 +26,21 @@ class StreamListener(StreamListener):
 
         # Decode the JSON from Twitter
         datajson = json.loads(data)
-
+        print(sys.getsizeof(datajson))
         #grab the 'created_at' data from the Tweet to use for display
         created_at = datajson['created_at']
 
         #print out a message to the screen that we have collected a tweet
-        print("Tweet collected at " + str(created_at) + datajson['text'])
+        print("Tweet collected at " + str(created_at) + " " + datajson['text'])
         return(True)
+
 
 auth = OAuthHandler(ckey, csecret)
 auth.set_access_token(atoken, asecret)
-
+input = input("Which districts would you like to observe? Please separate districts by a comma")
+keywords = list(input.split(','))
 twitterStream = Stream(auth, StreamListener())
-twitterStream.filter(track=[sys.argv[1]])
+twitterStream.filter(track=keywords)
 '''
     def on_data(self, data):
         #This is the meat of the script...it connects to your mongoDB and stores the tweet
