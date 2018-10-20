@@ -1,9 +1,14 @@
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
+from pymongo import MongoClient
 import json
 import sys
 
+
+
+MONGO_HOST= 'mongodb://localhost/nydb'  # assuming you have mongoDB installed locally
+                                             # and a database called 'twitterdb'
 ckey = "pF5W6BaHFteEYdkq38cgZ755g"
 csecret = "AwnBHQTmvVr6cMSYKm89vQOXMO3sPyoGvhXMaow3zlg2G74vLq"
 atoken = "2646419088-gtzEn525GUUtTlwpegdZGd8dGLWl8m2IGq9jk9y"
@@ -22,27 +27,6 @@ class StreamListener(StreamListener):
         return False
 
     def on_data(self, data):
-        #db = client.twitterdb
-
-        # Decode the JSON from Twitter
-        datajson = json.loads(data)
-        print(sys.getsizeof(datajson))
-        #grab the 'created_at' data from the Tweet to use for display
-        created_at = datajson['created_at']
-
-        #print out a message to the screen that we have collected a tweet
-        print("Tweet collected at " + str(created_at) + " " + datajson['text'])
-        return(True)
-
-
-auth = OAuthHandler(ckey, csecret)
-auth.set_access_token(atoken, asecret)
-input = input("Which districts would you like to observe? Please separate districts by a comma")
-keywords = list(input.split(','))
-twitterStream = Stream(auth, StreamListener())
-twitterStream.filter(track=keywords)
-'''
-    def on_data(self, data):
         #This is the meat of the script...it connects to your mongoDB and stores the tweet
         try:
             client = MongoClient(MONGO_HOST)
@@ -57,11 +41,22 @@ twitterStream.filter(track=keywords)
             created_at = datajson['created_at']
 
             #print out a message to the screen that we have collected a tweet
-            print("Tweet collected at " + str(created_at))
+            print("Tweet collected at " + str(created_at) + " " + datajson['text'])
 
             #insert the data into the mongoDB into a collection called twitter_search
             #if twitter_search doesn't exist, it will be created.
             db.twitter_search.insert(datajson)
         except Exception as e:
            print(e)
+
+
+auth = OAuthHandler(ckey, csecret)
+auth.set_access_token(atoken, asecret)
+#input = input("Which districts would you like to observe? Please separate districts by a comma")
+#keywords = list(input.split(','))
+keywords = ["Delgado", "Faso", "NY19", "@DelgadoforNY19", "@RepJohnFaso"]
+twitterStream = Stream(auth, StreamListener())
+twitterStream.filter(track=keywords)
+'''
+
 '''
