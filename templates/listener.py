@@ -54,7 +54,7 @@ auth = OAuthHandler(ckey, csecret)
 auth.set_access_token(atoken, asecret)
 #input = input("Which districts would you like to observe? Please separate districts by a comma")
 #keywords = list(input.split(','))
-keywords = ["Delgado", "Faso", "NY19", "@DelgadoforNY19", "@RepJohnFaso"]
+keywords = ["Antonio Delgado", "John Faso", "NY19", "@DelgadoforNY19", "@RepJohnFaso"]
 twitterStream = Stream(auth, StreamListener())
 twitterStream.filter(track=keywords)
 '''
