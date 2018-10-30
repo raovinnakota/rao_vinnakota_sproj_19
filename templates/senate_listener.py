@@ -9,8 +9,7 @@ import sys
 
 
 MONGO_HOST= 'mongodb://localhost/miscdb'
-PATH_TO_CONFIG_FILE = '/root/rao_vinnakota_sproj_19/templates/races.ini'
-
+#PATH_TO_CONFIG_FILE = '/root/rao_vinnakota_sproj_19/templates/races.ini'
 ckey = "pF5W6BaHFteEYdkq38cgZ755g"
 csecret = "AwnBHQTmvVr6cMSYKm89vQOXMO3sPyoGvhXMaow3zlg2G74vLq"
 atoken = "2646419088-gtzEn525GUUtTlwpegdZGd8dGLWl8m2IGq9jk9y"
@@ -31,10 +30,10 @@ class StreamListener(StreamListener):
     def on_data(self, data):
         #This is the meat of the script...it connects to your mongoDB and stores the tweet
         try:
-            client = MongoClient(MONGO_HOST)
+            #client = MongoClient(MONGO_HOST)
 
             # Use twitterdb database. If it doesn't exist, it will be created.
-            db = client.senatedb
+            #db = client.senatedb
 
 
             # Decode the JSON from Twitter
@@ -43,6 +42,7 @@ class StreamListener(StreamListener):
                 if keyword in datajson['text']:
                     return keyword
                     break
+            collection = choose_collection(datajson, out_dict, keywords)
             #grab the 'created_at' data from the Tweet to use for display
             created_at = datajson['created_at']
 
@@ -51,7 +51,7 @@ class StreamListener(StreamListener):
 
             #insert the data into the mongoDB into a collection called twitter_search
             #if twitter_search doesn't exist, it will be created.
-            db.collection.insert(datajson)
+            #db.collection.insert(datajson)
         except Exception as e:
            print(e)
 
@@ -60,7 +60,8 @@ auth = OAuthHandler(ckey, csecret)
 auth.set_access_token(atoken, asecret)
 #keywords = ["Antonio Delgado", "John Faso", "NY19", "@DelgadoforNY19", "@RepJohnFaso"]
 #keywords = ["#midterms", "#vote", "#bluewave", "#redwave", "#democrats", "#elections", "#gop", "#usa"]
-keywords = create_keywords('SENATE')
+out_dict, keywords = create_keywords('SENATE')
+print(keywords)
 twitterStream = Stream(auth, StreamListener())
 twitterStream.filter(track=keywords)
 '''
