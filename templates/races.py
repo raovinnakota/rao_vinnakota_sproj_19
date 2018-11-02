@@ -26,12 +26,17 @@ def create_keywords(section):
     return(dict, keywords)
 
 def choose_collection(datajson, dict, keywords):
-    word = "misc"
+    word = ""
+    collection = "misc"
     for keyword in keywords:
-        if keyword in datajson['text']:
-            word = keyword
-            break
-    for i in dict:
-        if word in dict[i]:
-            return i
-            break
+        for key in keyword.split(' '):
+            print(key)
+            if key in datajson['text']:
+                word = key
+    if(word != ""):
+        for i in dict:
+            if word in dict[i]:
+                return i
+                break
+    print(collection)
+    return(collection)

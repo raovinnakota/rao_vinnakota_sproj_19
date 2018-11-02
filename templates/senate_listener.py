@@ -38,16 +38,12 @@ class StreamListener(StreamListener):
 
             # Decode the JSON from Twitter
             datajson = json.loads(data)
-            for keyword in keywords:
-                if keyword in datajson['text']:
-                    return keyword
-                    break
             collection = choose_collection(datajson, out_dict, keywords)
             #grab the 'created_at' data from the Tweet to use for display
             created_at = datajson['created_at']
 
             #print out a message to the screen that we have collected a tweet
-            print("Tweet collected at " + str(created_at) + " " + datajson['text'])
+            print(datajson['text'])
 
             #insert the data into the mongoDB into a collection called twitter_search
             #if twitter_search doesn't exist, it will be created.
