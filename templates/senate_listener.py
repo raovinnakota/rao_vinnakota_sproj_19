@@ -10,10 +10,10 @@ import sys
 
 MONGO_HOST= 'mongodb://localhost/senatedb'
 #PATH_TO_CONFIG_FILE = '/root/rao_vinnakota_sproj_19/templates/races.ini'
-ckey = "pF5W6BaHFteEYdkq38cgZ755g"
-csecret = "AwnBHQTmvVr6cMSYKm89vQOXMO3sPyoGvhXMaow3zlg2G74vLq"
-atoken = "2646419088-gtzEn525GUUtTlwpegdZGd8dGLWl8m2IGq9jk9y"
-asecret = "iQbg8ZfJ8KkI06n0lwkCVVprtkzsIp6h1RMXP5LN3Z6o2"
+ckey = "BYgz2B0bSLWo9gsSmiZ88JQRr"
+csecret = "RUs4q0kHK0vEfaa9oOqpHXflFVk1A3RXL01F2T9nXo5ZMBDWmF"
+atoken = "2646419088-OKrQldSYBKtdheVGsBq9pYb1CPVeGemXAN1vRZl"
+asecret = "HbsGfDkAlSOyCBdvmR1dUKg9zveoPVZvCvoRVDQJpFUwn"
 
 class StreamListener(StreamListener):
     #This is a class provided by tweepy to access the Twitter Streaming API.
