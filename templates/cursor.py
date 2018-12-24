@@ -9,8 +9,8 @@ democrats = []
 republicans = []
 for tweet in cursor:
     dict_tweet = dict(tweet)
-    if "#democrats" in test_tweet.text:
-        democrats.append(test_tweet.text)
-    elif "#gop" in test_tweet.text:
-        republicans.append(test_tweet.text)
+    if "#democrats" in dict_tweet.text:
+        democrats.append(dict_tweet.text)
+    elif "#gop" in dict_tweet.text:
+        republicans.append(dict_tweet.text)
     print("Democrats" + str(len(democrats)) + "\nRepublicans" + str(len(republicans)))
