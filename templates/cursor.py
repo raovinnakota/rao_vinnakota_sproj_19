@@ -15,6 +15,4 @@ for tweet in cursor:
     text = dict_tweet['text'].replace('\n', '')
     print(text)
     f.write(text + '\n')
-    if i == 200:
-        break
 f.close()
