@@ -10,6 +10,6 @@ republicans = []
 for tweet in cursor:
     if "#democrats" in tweet.text:
         democrats.append(tweet.text)
-    else if "#gop" in tweet.text:
+    elif "#gop" in tweet.text:
         republicans.append(tweet.text)
     print("Democrats" + str(len(democrats)) + "\nRepublicans" + str(len(republicans)))
