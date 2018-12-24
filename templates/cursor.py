@@ -8,8 +8,12 @@ misc = db.misc
 cursor = misc.find()
 democrats = []
 republicans = []
+i = 0
 for tweet in cursor:
+    i += 1
     dict_tweet = dict(tweet)
     text = dict_tweet['text'].replace('\n', '')
     f.write(text + '\n')
+    if i = 200:
+        break
 f.close()
