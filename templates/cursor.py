@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 MONGO_HOST = 'mongodb://localhost/miscdb'
 client = MongoClient(MONGO_HOST)
-db = cliet.miscdb
+db = client.miscdb
 misc = db.misc
 cursor = misc.find()
 democrats = []
