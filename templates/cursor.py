@@ -2,6 +2,7 @@ from pymongo import MongoClient
 
 MONGO_HOST = 'mongodb://localhost/miscdb'
 client = MongoClient(MONGO_HOST)
+f = open('misc.txt', 'w+')
 db = client.miscdb
 misc = db.misc
 cursor = misc.find()
@@ -9,8 +10,6 @@ democrats = []
 republicans = []
 for tweet in cursor:
     dict_tweet = dict(tweet)
-    if "#democrats" in dict_tweet.text:
-        democrats.append(dict_tweet.text)
-    elif "#gop" in dict_tweet.text:
-        republicans.append(dict_tweet.text)
-    print("Democrats" + str(len(democrats)) + "\nRepublicans" + str(len(republicans)))
+    text = dict_tweet['text'].replace('\n', '')
+    f.write(text + '\n')
+f.close()
