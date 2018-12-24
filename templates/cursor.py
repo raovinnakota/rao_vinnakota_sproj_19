@@ -8,8 +8,9 @@ cursor = misc.find()
 democrats = []
 republicans = []
 for tweet in cursor:
-    if "#democrats" in tweet.text:
-        democrats.append(tweet.text)
-    elif "#gop" in tweet.text:
-        republicans.append(tweet.text)
+    dict_tweet = dict(tweet)
+    if "#democrats" in test_tweet.text:
+        democrats.append(test_tweet.text)
+    elif "#gop" in test_tweet.text:
+        republicans.append(test_tweet.text)
     print("Democrats" + str(len(democrats)) + "\nRepublicans" + str(len(republicans)))
