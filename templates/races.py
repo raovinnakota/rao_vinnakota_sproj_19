@@ -2,7 +2,7 @@ import sys as sys
 import ast
 from configparser import ConfigParser
 
-PATH_TO_CONFIG_FILE = 'races.ini'
+PATH_TO_CONFIG_FILE = '/root/rao_vinnakota_sproj_19/templates/races.ini'
 
 
 def section_to_dict(section):
