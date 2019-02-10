@@ -18,7 +18,7 @@ def section_to_dict(section, parser):
 def gather_tweets(race, collection):
     total = 0
     for i in race:
-        cursor = collection.find({"text": {"$regex" : i , "$": "$i"}})
+        cursor = collection.find({"text": {"$regex" : i , "$options": "$i"}})
         total += cursor.count()
     return(total)
 
