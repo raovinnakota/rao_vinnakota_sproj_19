@@ -30,5 +30,6 @@ if __name__ == "__main__":
     senate = section_to_dict('SENATE', config)
     race_count = {}
     for i in senate:
+        print(i)
         race_count[i] = gather_tweets(senate[i], presort)
     print(race_count)
