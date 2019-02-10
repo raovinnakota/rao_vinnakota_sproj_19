@@ -24,6 +24,7 @@ def gather_tweets(race, collection):
 
 if __name__ == "__main__":
     config = ConfigParser()
+    client = MongoClient(MONGO_HOST)
     db = client.senatedb
     presort = db.presort
     senate = section_to_dict('SENATE', config)
