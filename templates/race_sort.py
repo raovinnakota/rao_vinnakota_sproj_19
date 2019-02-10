@@ -29,11 +29,10 @@ if __name__ == "__main__":
     db = client.senatedb
     presort = db.presort
     senate = section_to_dict('SENATE', config)
-    race_count = {}
+    if (len(senate) < 33):
+        print("Didn't read the entirety of the section")
     with open('race_count.csv', 'w') as csv_file:
         writer = csv.writer(csv_file)
         for i in senate:
             print(i)
             writer.writerow([i, gather_tweets(i, presort)])
-            #race_count[i] = gather_tweets(senate[i], presort)
-    print(race_count)
