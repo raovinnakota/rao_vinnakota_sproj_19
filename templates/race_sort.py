@@ -4,7 +4,7 @@ from configparser import ConfigParser
 from pymongo import MongoClient
 
 FILE_NAME = 'races.ini'
-MONGO_HOST = 'mongodb://localhost/senatedb'
+MONGO_HOST = 'mongodb://localhost/housedb'
 
 def section_to_dict(section, parser):
     #change path to your ini file if running locally
@@ -27,12 +27,12 @@ if __name__ == "__main__":
     client = MongoClient(MONGO_HOST)
     db = client.senatedb
     presort = db.presort
-    senate = section_to_dict('SENATE', config)
-    f = open('race_count.csv', 'w+')
+    senate = section_to_dict('HOUSE', config)
+    f = open('house_count.csv', 'w+')
     f.write('Race,Tweets\n')
     for i in senate:
         print(i)
-    #    count = gather_tweets(i, presort)
-    #    print(count)
-        f.write(i + '\n')
+        count = gather_tweets(i, presort)
+        print(count)
+        f.write(i + ',' + str(count) + '\n')
     f.close()
