@@ -30,9 +30,9 @@ if __name__ == "__main__":
     senate = section_to_dict('SENATE', config)
     f = open('race_count.csv', 'w+')
     f.write('Race,Tweets\n')
-    #for i in senate:
-    #    print(i)
+    for i in senate:
+        print(i)
     #    count = gather_tweets(i, presort)
     #    print(count)
-    #    f.write(i + ',' + str(count) + '\n')
+        f.write(i + '\n')
     f.close()
