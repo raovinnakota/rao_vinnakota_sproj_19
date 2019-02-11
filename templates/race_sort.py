@@ -29,9 +29,7 @@ if __name__ == "__main__":
     presort = db.presort
     senate = section_to_dict('SENATE', config)
     f = open('race_count.txt', 'w+')
-    f.write('Arizona Senate' + ',' + str(gather_tweets(Senate['Arizona Senate'], presort)) + '\n')
-    '''
+    f.write('Race,Tweets\n')
     for i in senate:
         print(i)
         f.write(i + ',' + str(gather_tweets(i, presort)) + '\n')
-    '''
