@@ -34,5 +34,5 @@ if __name__ == "__main__":
         print(i)
         count = gather_tweets(i, presort)
         print(count)
-        f.write(i + ',' + str(gather_tweets(i, presort)) + '\n')
+        f.write(i + ',' + str(count) + '\n')
     f.close()
