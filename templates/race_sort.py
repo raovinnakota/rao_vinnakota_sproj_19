@@ -12,7 +12,7 @@ def section_to_dict(section, parser):
     out_dict = {}
     for key in parser[section]:
         temp = ast.literal_eval(parser[section][key])
-        out_dict[temp[-1]] = temp
+        out_dict[temp[-1]] = temp[:-1]
     return(out_dict)
 
 def gather_tweets(race, collection):
