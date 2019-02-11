@@ -28,8 +28,11 @@ if __name__ == "__main__":
     db = client.senatedb
     presort = db.presort
     senate = section_to_dict('SENATE', config)
-    f = open('race_count.txt', 'w+')
+    f = open('race_count.csv', 'w+')
     f.write('Race,Tweets\n')
     for i in senate:
         print(i)
+        count = gather_tweets(i, presort)
+        print(count)
         f.write(i + ',' + str(gather_tweets(i, presort)) + '\n')
+    f.close()
