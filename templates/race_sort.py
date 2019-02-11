@@ -1,6 +1,5 @@
 import datetime
 import ast
-import csv
 from configparser import ConfigParser
 from pymongo import MongoClient
 
@@ -29,8 +28,10 @@ if __name__ == "__main__":
     db = client.senatedb
     presort = db.presort
     senate = section_to_dict('SENATE', config)
-    with open('race_count.csv', 'w') as csv_file:
-        writer = csv.writer(csv_file)
-        for i in senate:
-            print(i)
-            writer.writerow([i, gather_tweets(i, presort)])
+    f = open('race_count.txt', 'w+')
+    f.write('Arizona Senate' + ',' + str(gather_tweets(Senate['Arizona Senate'], presort)) + '\n')
+    '''
+    for i in senate:
+        print(i)
+        f.write(i + ',' + str(gather_tweets(i, presort)) + '\n')
+    '''
