@@ -26,7 +26,7 @@ def gather_tweets(race, collection):
 if __name__ == "__main__":
     config = ConfigParser()
     client = MongoClient(MONGO_HOST)
-    db = client.senatedb
+    db = client.housedb
     presort = db.presort
     senate = section_to_dict('HOUSE', config)
     f = open('house_count.csv', 'w+')
