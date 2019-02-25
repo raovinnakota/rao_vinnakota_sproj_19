@@ -1,4 +1,5 @@
 import ast
+import sys
 from configparser import ConfigParser
 from pymongo import MongoClient
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -10,14 +11,14 @@ def gather_tweets(phrase, collection):
     entries = [entry for entry in cursor]
     return(entries)
 
-
 if __name__ == "__main__":
     config = ConfigParser()
     client = MongoClient(MONGO_HOST)
     db = client.housedb
     presort = db.presort
     entries = gather_tweets("Donald Trump", presort)
-    print(len(entries))
+    for i in entries:
+        print(i['text'])
     #senate = section_to_dict('HOUSE', config)
     #f = open('house_count.csv', 'w+')
     #f.write('Race,Tweets\n')
