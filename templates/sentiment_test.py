@@ -12,7 +12,8 @@ def gather_tweets(phrase, collection):
     return(entries)
 
 def strip_tweet(text):
-    text.replace('\n', '')
+    text = text.replace('\n', '')
+    return(text)
 
 if __name__ == "__main__":
     config = ConfigParser()
@@ -25,7 +26,7 @@ if __name__ == "__main__":
     #f.write('Tweet, Pos, Neu, Com,\n')
     for i in entries:
         tweet = strip_tweet(i['text'])
-        sentiment = analyzer.polarity_scores(sentence)
+        sentiment = analyzer.polarity_scores(tweet)
         print(tweet, sentiment)
 
     #senate = section_to_dict('HOUSE', config)
