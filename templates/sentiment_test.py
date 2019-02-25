@@ -7,7 +7,7 @@ MONGO_HOST = 'mongodb://localhost/housedb'
 
 def gather_tweets(phrase, collection):
     cursor = collection.find({"text": {"$regex" : phrase, "$options": "$i"}})
-    entries = cursor[:]
+    entries = list(cursor[:])
     return(entries)
 
 
