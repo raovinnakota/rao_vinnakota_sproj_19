@@ -3,6 +3,8 @@ from configparser import ConfigParser
 from pymongo import MongoClient
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+MONGO_HOST = 'mongodb://localhost/housedb'
+
 def gather_tweets(phrase, collection):
     cursor = collection.find({"text": {"$regex" : phrase, "$options": "$i"}})
     entries = cursor[:]
