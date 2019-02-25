@@ -6,8 +6,8 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 MONGO_HOST = 'mongodb://localhost/housedb'
 POLITICIAN = sys.argv[1]
-DATABASE = sys.argv[2]
-COLLECTION = sys.argv[3]
+#DATABASE = sys.argv[2]
+#COLLECTION = sys.argv[3]
 
 def gather_tweets(phrase, collection):
     cursor = collection.find({"text": {"$regex" : phrase, "$options": "$i"}})
@@ -22,8 +22,8 @@ if __name__ == "__main__":
     config = ConfigParser()
     client = MongoClient(MONGO_HOST)
     analyzer = SentimentIntensityAnalyzer()
-    db = client.DATABASE
-    presort = db.COLLECTION
+    db = client.housedb
+    presort = db.presort
     entries = gather_tweets(POLITICIAN, presort)
     #f = open('trump_sentiment.csv', 'w+')
     #f.write('Tweet, Pos, Neu, Com,\n')
