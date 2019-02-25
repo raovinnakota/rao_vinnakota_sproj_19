@@ -1,0 +1,76 @@
+\documentclass[11pt, twoside, reqno]{article}
+\usepackage{amssymb, amsthm, amsmath, amsfonts}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage[toc,page]{appendix}
+\usepackage{listings}
+\usepackage[shortlabels]{enumitem}
+\setlist[enumerate, 1]{1\textsuperscript{o}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+\section{Weeks 3/4}
+
+This week was an exploration about querying and withdrawing data from the databases. Querying is a big part of any modeling going forward, and it was important to understand the basics of querying in Mongo. Here is a review of my work this past week:
+
+\subsection{Querying}
+A query is used to retrieve data from a database. Simple queries (with our database in mind), may just be all the tweets in English. More complex queries may be searching with multiple factors such as trend, location, and time. Most queries will return a set of data, but incredibly complex queries may return a single document. 
+
+A special type of query, the empty query, will return every single document in the collection (or table) being queried. Empty queries are generally discouraged, since parsing through the query result is essentially parsing through the entire database. 
+
+
+\subsection{Querying in MongoDB}
+Referring back to the structure of a MongoDB outlined, querying happens in individual collection. The find command works on a single collection and finds documents based on the given parameters. Here's how the search command is laid out:
+
+\begin{lstlisting}
+db.collection.find({field: match})
+\end{lstlisting}
+
+This command will return a cursor that references all the tweets that match the condition. The cursor is iterable which means that it can be iterated through like a list or a dictionary. It also has a variety of features such as count - which returns the number of tweets the cursor refers to. 
+
+Here's a breakdown of what's happening in the attached code snippet. Tweets in the senate database are stored, unsorted. It's not clear which race each tweet belongs to. In a separate document, the search terms for each race are organized. The code race sort does three things:
+\begin{enumerate}
+	\item Reads the file containing the search terms for each race. This is usually the name of the candidate and the name of the race. For example two terms for the Arizona Senate Race to replace Jeff Flake's seat are "Krysten Sinema" and "AZSenate". 
+	\item Uses regular expression to search for terms within the text of each tweet. Currently, each tweet is a JSON object that holds a lot of data beyond the text. This means that the text is a field by itself, and to search for particular races we have to search within the field. We use regular expressions - which is a method of pattern searching to accomplish this task. 
+	\item As mentioned above, the completed search will return a cursor. This code calls the function count, which returns the number of tweets collected in the search. Future code will look to label the tweets with an appropriate race. 
+\end{enumerate}
+
+\subsection{Problems I'm Struggling With}
+There's definitely some overlap between search terms of various races. To properly count a total requires the use of combinatoric principles, and I'm still unsure how to do that. Another issue that is still out there is that iterating through a cursor that refers to a large number of tweets times out. That needs to be fixed. 
+
+\subsection{Code Written This Week}
+\lstinputlisting[language=Python]{race_sort.py}
+
+\newpage
+
+\section{Week 5}
+
+\end{document}
