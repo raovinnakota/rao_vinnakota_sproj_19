@@ -39,5 +39,8 @@ if __name__ == "__main__":
             neg_tweets += 1
         ave_score += sentiment['compound']
         count += 1
-    print("Average score:", ave_score/count, "Positive Tweets:", pos_tweets,
-            "Negative Tweets:", neg_tweets, "Neutral Tweets:", neu_tweets)
+    if count == 0:
+        print("No Tweets for this Politician exist in this database")
+    else:
+        print("Average score:", ave_score/count, "Positive Tweets:", pos_tweets,
+                "Negative Tweets:", neg_tweets, "Neutral Tweets:", neu_tweets)
