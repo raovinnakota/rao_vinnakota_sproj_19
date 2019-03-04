@@ -39,4 +39,5 @@ if __name__ == "__main__":
             neg_tweets += 1
         ave_score += sentiment['compound']
         count += 1
-    print(ave_score/count, pos_tweets, neg_tweets, neu_tweets)
+    print("Average score:", ave_score/count, "Positive Tweets:", pos_tweets,
+            "Negative Tweets:", neg_tweets, "Neutral Tweets:", neu_tweets)
