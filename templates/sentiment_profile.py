@@ -4,7 +4,8 @@ from configparser import ConfigParser
 from pymongo import MongoClient
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-MONGO_HOST = 'mongodb://localhost/housedb'
+#MONGO_HOST = 'mongodb://localhost/housedb'
+MONGO_HOST = 'mongodb://localhost/senatedb'
 POLITICIAN = sys.argv[1]
 
 def gather_tweets(phrase, collection):
@@ -20,7 +21,8 @@ if __name__ == "__main__":
     config = ConfigParser()
     client = MongoClient(MONGO_HOST)
     analyzer = SentimentIntensityAnalyzer()
-    db = client.housedb
+    #db = client.housedb
+    db = client.senatedb
     presort = db.presort
     entries = gather_tweets(POLITICIAN, presort)
     ave_score = 0
