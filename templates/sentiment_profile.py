@@ -37,6 +37,6 @@ if __name__ == "__main__":
             pos_tweets += 1
         if (sentiment['compound'] < 0):
             neg_tweets += 1
-        ave_score += sentiment['conmpound']
+        ave_score += sentiment['compound']
         count += 1
     print(ave_score/count, pos_tweets, neg_tweets, neu_tweets)
