@@ -62,7 +62,7 @@ if __name__ == "__main__":
     config = ConfigParser()
     senate = section_to_dict('SENATE', config)
     test_list = senate['Arizona Senate']
-    f = open('senate_profile.csv')
+    f = open('senate_profile.csv', 'w+')
     f.write('Search Term,Count,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
     for i in test_list:
         ave_score, pos_tweets, neg_tweets, neu_tweets, count = build_sentiment_profile(i, senate)
