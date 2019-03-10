@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 MONGO_HOST = 'mongodb://localhost/'
+FILE_NAME = 'races.ini'
 #POLITICIAN = sys.argv[1]
 #DB = sys.argv[2]
 
@@ -62,7 +63,9 @@ if __name__ == "__main__":
     senate = section_to_dict(SENATE)
     test_list = senate[0]
     f = open('senate_profile.csv')
-    f.write('Search Term,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
-    for i in senate:
-        for term in senate[i]:
-            ave_score, pos_tweets, neg_tweets, neu_tweets, count = build_sentiment_profile(term, senate)
+    f.write('Search Term,Count,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
+    for i in test_list:
+        ave_score, pos_tweets, neg_tweets, neu_tweets, count = build_sentiment_profile(i, senate)
+        line = str(i) + ',' + str(count) + ',' + str(pos_tweets) + ',' + str(neg_tweets) + ',' + str(neu_tweets) + ',' + str(ave_score) + '\n'
+        f.write(line)
+    f.close()
