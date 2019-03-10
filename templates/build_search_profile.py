@@ -60,6 +60,9 @@ def build_sentiment_profile(politician, db_choice):
 if __name__ == "__main__":
     config = ConfigParser()
     senate = section_to_dict(SENATE)
+    test_list = senate[0]
     f = open('senate_profile.csv')
     f.write('Search Term,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
     for i in senate:
+        for term in senate[i]:
+            ave_score, pos_tweets, neg_tweets, neu_tweets, count = build_sentiment_profile(term, senate)
