@@ -66,6 +66,6 @@ if __name__ == "__main__":
     f.write('Search Term,Count,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
     for i in test_list:
         ave_score, pos_tweets, neg_tweets, neu_tweets, count = build_sentiment_profile(i, 'senate')
-        line = str(i) + ',' + str(count) + ',' + str(pos_tweets) + ',' + str(neg_tweets) + ',' + str(neu_tweets) + ',' + str(ave_score) + '\n'
+        line = str(i) + ',' + str(count) + ',' + str(pos_tweets) + ',' + str(neg_tweets) + ',' + str(neu_tweets) + ',' + str(ave_score/count) + '\n'
         f.write(line)
     f.close()
