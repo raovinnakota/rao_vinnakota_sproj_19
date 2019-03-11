@@ -80,6 +80,9 @@ if __name__ == "__main__":
         print(i)
         for term in senate[i]:
             ave_score, pos_tweets, neg_tweets, neu_tweets, count = build_sentiment_profile(i, 'senate')
-            line = str(term) + ',' + str(i) + ',' + str(count) + ',' + str(pos_tweets) + ',' + str(neg_tweets) + ',' + str(neu_tweets) + ',' + str(ave_score/count) + '\n'
+            if (count > 0):
+                line = str(term) + ',' + str(i) + ',' + str(count) + ',' + str(pos_tweets) + ',' + str(neg_tweets) + ',' + str(neu_tweets) + ',' + str(ave_score/count) + '\n'
+            else:
+                line = str(term) + ',' + str(i) + ",0,0,0,0,0\n"
             f.write(line)
     f.close()
