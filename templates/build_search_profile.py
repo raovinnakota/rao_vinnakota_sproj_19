@@ -61,11 +61,14 @@ def build_sentiment_profile(politician, db_choice):
 
 if __name__ == "__main__":
     config = ConfigParser()
-    senate = section_to_dict('SENATE', config)
+    #senate = section_to_dict('SENATE', config)
+    senate = section_to_dict('HOUSE', config)
     #f = open('senate_profile.csv', 'w+')
-    f = open('misc_profile.csv', 'w+')
-    #f.write('Search Term,Race,Count,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
-    f.write('Search Term,Count,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
+    #f = open('misc_profile.csv', 'w+')
+    f = open('house_profile.csv', 'w+')
+    f.write('Search Term,Race,Count,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
+    #f.write('Search Term,Count,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound\n')
+    '''
     for i in keywords:
         print(i)
         ave_score, pos_tweets, neg_tweets, neu_tweets, count = build_sentiment_profile(i, 'senate')
@@ -79,5 +82,4 @@ if __name__ == "__main__":
             ave_score, pos_tweets, neg_tweets, neu_tweets, count = build_sentiment_profile(i, 'senate')
             line = str(term) + ',' + str(i) + ',' + str(count) + ',' + str(pos_tweets) + ',' + str(neg_tweets) + ',' + str(neu_tweets) + ',' + str(ave_score/count) + '\n'
             f.write(line)
-    '''
     f.close()
