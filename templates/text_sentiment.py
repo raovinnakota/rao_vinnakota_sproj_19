@@ -14,13 +14,19 @@ def build_sentiment_profile(text):
     analyzer = SentimentIntensityAnalyzer()
     tweet = strip_tweet(text)
     sentiment = analyzer.polarity_scores(tweet)
-    return(sentiment)
+    return(tweet, sentiment)
 
 if __name__ == '__main__':
     client = MongoClient(MONGO_HOST)
     db = client.miscdb
     presort = db.presort
     cursor = presort.find()
+    f = open('sentiment.csv', 'w+')
+    f.write("Text,Compound,Pos,Neg,Neu\n")
     for i in cursor:
-        print(build_sentiment_profile(text))
-    
+        tweet, sentiment = build_sentiment_profile(text)
+        line = str(tweet) + ',' + str(sentiment['compound']) +
+        ',' + str(sentiment['Pos']) + ',' + str(sentiment['Neg']) +
+        ',' + str(sentiment['Neu']) + '\n'
+        f.write(line)
+    f.close()
