@@ -26,7 +26,7 @@ if __name__ == '__main__':
     count = 0
     for i in cursor:
         count += 1
-        tweet, sentiment = build_sentiment_profile(i)
+        tweet, sentiment = build_sentiment_profile(i['text'])
         print(count, tweet)
         line = (str(tweet) + ',' + str(sentiment['compound']) + ',' + str(sentiment['Pos']) + ',' + str(sentiment['Neg']) +
         ',' + str(sentiment['Neu']) + '\n')
