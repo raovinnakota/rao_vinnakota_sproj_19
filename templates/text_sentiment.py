@@ -19,7 +19,7 @@ def build_sentiment_profile(text):
 if __name__ == '__main__':
     client = MongoClient(MONGO_HOST)
     db = client.miscdb
-    presort = db.presort
+    presort = db.misc
     cursor = presort.find()
     f = open('sentiment.csv', 'w+')
     f.write("Text,Compound,Pos,Neg,Neu\n")
