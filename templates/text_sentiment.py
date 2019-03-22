@@ -28,7 +28,8 @@ if __name__ == '__main__':
         count += 1
         tweet, sentiment = build_sentiment_profile(i['text'])
         print(count, tweet)
-        line = (str(tweet) + ',' + str(sentiment['compound']) + ',' + str(sentiment['Pos']) + ',' + str(sentiment['Neg']) +
-        ',' + str(sentiment['Neu']) + '\n')
+        line = (str(tweet) + ',' + str(sentiment['compound']) +
+        ',' + str(sentiment['pos']) + ',' + str(sentiment['neg']) +
+        ',' + str(sentiment['neu']) + '\n')
         f.write(line)
     f.close()
