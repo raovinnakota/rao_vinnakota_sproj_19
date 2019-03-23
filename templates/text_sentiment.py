@@ -26,10 +26,10 @@ if __name__ == '__main__':
     count = 0
     for i in cursor:
         count += 1
+        print(count, tweet)
         while count < 284608:
             continue
         tweet, sentiment = build_sentiment_profile(i['text'])
-        print(count, tweet)
         line = (str(tweet) + ',' + str(sentiment['compound']) +
         ',' + str(sentiment['pos']) + ',' + str(sentiment['neg']) +
         ',' + str(sentiment['neu']) + '\n')
