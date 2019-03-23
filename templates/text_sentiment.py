@@ -22,13 +22,10 @@ if __name__ == '__main__':
     presort = db.misc
     cursor = presort.find()
     f = open('sentiment.csv', 'w+')
-    #f.write("Text,Compound,Pos,Neg,Neu\n")
+    f.write("Text,Compound,Pos,Neg,Neu\n")
     count = 0
     for i in cursor:
         count += 1
-        while count < 284608:
-            print(count)
-            continue
         tweet, sentiment = build_sentiment_profile(i['text'])
         print(count, tweet)
         line = (str(tweet) + ',' + str(sentiment['compound']) +
