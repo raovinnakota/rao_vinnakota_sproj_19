@@ -1,0 +1,126 @@
+Search Term,Race,Count,Pos Tweets,Neg Tweets,Neu Tweets,Average Compound
+Kyrsten Sinema,Arizona Senate,7472,2566,2889,2017,-0.0620541889721626
+Martha McSally,Arizona Senate,21265,7357,2705,11203,0.10993008229484663
+Angela Green,Arizona Senate,845,810,9,26,0.6454665088757305
+#AZSenate,Arizona Senate,28,11,6,11,0.05860000000000002
+Diane Feinstein,California Senate,377,122,153,102,-0.061860477453580996
+Kevin de Leon,California Senate,334,160,45,129,0.1791499999999999
+#CASenate,California Senate,0,0,0,0,0
+Christopher Murphy,Connecticut Senate,2,0,1,1,-0.36485
+Matthew Corey,Connecticut Senate,123,54,38,31,0.08560081300813001
+Jeffery Russell,Connecticut Senate,0,0,0,0,0
+Richard Lion,Connecticut Senate,4,1,2,1,-0.025724999999999998
+#CTSenate,Connecticut Senate,2,0,0,2,0.0
+Tom Carper,Delaware Senate,292,234,24,34,0.25997157534246573
+Robert Arlett,Delaware Senate,18,4,1,13,0.04161666666666666
+Demitri Theodoropoulos,Delaware Senate,0,0,0,0,0
+Nadine Frost,Delaware Senate,2,0,0,2,0.0
+#DESenate,Delaware Senate,0,0,0,0,0
+Bill Nelson,Florida Senate,25095,5483,13190,6422,-0.00992542339111907
+Rick Scott,Florida Senate,44130,17628,9743,16759,0.13589523680036666
+#FLSenate,Florida Senate,19,7,0,12,0.12146315789473683
+Mazie Hirono,Hawaii Senate,567,481,39,47,0.40716649029982227
+Ron Curtis,Hawaii Senate,94,53,8,33,0.1586946808510638
+#HISenate,Hawaii Senate,0,0,0,0,0
+Joe Donnelly,Indiana Senate,23383,6352,10845,6186,-0.10585949621519307
+Mike Braun,Indiana Senate,24600,13603,5800,5197,0.23212481300813376
+Lucy Brenton,Indiana Senate,57,19,16,22,0.007815789473684217
+#INSenate,Indiana Senate,24,16,0,8,0.33601250000000005
+Angus King,Maine Senate,739,127,440,172,-0.1950075778078471
+Zak Ringelstein,Maine Senate,28,3,0,25,0.07850357142857144
+Eric Brakey,Maine Senate,79,25,26,28,-0.048522784810126576
+#MESenate,Maine Senate,0,0,0,0,0
+Ben Cardin,Maryland Senate,526,449,7,70,0.48123384030418287
+Tony Campbell,Maryland Senate,1589,14,2,1573,0.004055506607929515
+Arvin Vohra,Maryland Senate,1,1,0,0,0.3612
+Neal Simon,Maryland Senate,10,4,0,6,0.15631
+#MDSenate,Maryland Senate,1,0,0,1,0.0
+Elizabeth Warren,Massachusetts Senate,6754,3852,1157,1745,0.1618741930707761
+Geoff Diehl,Massachusetts Senate,3074,556,504,2014,0.007935328562133952
+Shiva Ayyadurai,Massachusetts Senate,27,4,9,14,-0.09440370370370371
+#MASenate,Massachusetts Senate,2,0,0,2,0.0
+Debbie Stabenow,Michigan Senate,5308,2207,1496,1605,0.06061738884702185
+John James,Michigan Senate,41192,11693,3635,25864,0.09196915177704759
+Marcia Squier,Michigan Senate,64,12,0,52,0.023745312500000004
+#MISenate,Michigan Senate,8,4,0,4,0.30725
+Amy Klobuchar,Minnesota Senate,3061,2285,113,663,0.39280934335185197
+Jim Newberger,Minnesota Senate,134,51,19,64,0.15132537313432837
+Paula Overby,Minnesota Senate,32,10,19,3,-0.221009375
+#MNSenate,Minnesota Senate,3,0,0,3,0.0
+Roger Wicker,Mississippi Senate,469,349,15,105,0.40768720682302767
+David Baria,Mississippi Senate,225,77,13,135,0.13050133333333327
+Danny Bedwell,Mississippi Senate,19,2,0,17,0.04436842105263158
+#MSSenate,Mississippi Senate,380,8,0,372,0.011520789473684212
+Claire McCaskill,Missouri Senate,27940,23663,2328,1949,0.39170741231198974
+Josh Hawley,Missouri Senate,12033,1568,7488,2977,-0.24726011800883083
+Jo Crain,Missouri Senate,17,3,2,12,0.03968235294117649
+#MOSenate,Missouri Senate,174,2,6,166,-0.008692528735632183
+Jon Tester,Montana Senate,3329,523,1147,1659,0.005656653649744094
+Matt Rosendale,Montana Senate,9050,539,357,8154,0.029060640883977827
+#MTSenate,Montana Senate,4,0,3,1,-0.22199999999999998
+Deb Fischer,Nebraska Senate,199,93,21,85,0.16342160804020092
+Jane Raybould,Nebraska Senate,49,13,4,32,0.0748265306122449
+#NESenate,Nebraska Senate,1,1,0,0,0.5719
+Dean Heller,Nevada Senate,4431,1344,993,2094,0.030150169262018165
+Jacky Rosen,Nevada Senate,3215,915,767,1533,0.04192681181959572
+Kamau Bakari,Nevada Senate,1,0,0,1,0.0
+#NVSenate,Nevada Senate,2,2,0,0,0.2023
+Bob Menendez,New Jersey Senate,12511,6890,3463,2158,0.20566557429461277
+Bob Hugan,New Jersey Senate,22,3,11,8,-0.06961363636363636
+Hank Schroeder,New Jersey Senate,1,0,0,1,0.0
+Natalie Lynn Rivera,New Jersey Senate,0,0,0,0,0
+Madelyn Hoffman,New Jersey Senate,12,6,0,6,0.38494166666666657
+Murray Sabrin,New Jersey Senate,9,5,0,4,0.26795555555555556
+#NJSenate,New Jersey Senate,104,13,71,20,-0.09212019230769242
+Martin Heinrich,New Mexico Senate,733,565,86,82,0.43308226466575794
+Mick Rich,New Mexico Senate,31,31,0,0,0.5222677419354838
+Gary Johnson,New Mexico Senate,325,136,81,108,0.11039938461538465
+#NMSenate,New Mexico Senate,1,0,0,1,0.0
+Kirsten Gillibrand,New York Senate,1533,1084,124,325,0.35922981082844546
+Chele Farley,New York Senate,354,124,101,129,0.015572316384180825
+#NYSenate,New York Senate,76,24,5,47,0.12242763157894739
+Heidi Heitkamp,North Dakota Senate,3404,2379,551,474,0.1874353701527663
+Kevin Cramer,North Dakota Senate,8085,213,131,7741,0.006947705627705641
+#NDSenate,North Dakota Senate,6,2,3,1,0.09841666666666667
+Sherrod Brown,Ohio Senate,8961,6130,1761,1070,0.17205634415801951
+Jim Renacci,Ohio Senate,2578,463,255,1860,0.032845461598138184
+#OHSenate,Ohio Senate,0,0,0,0,0
+Bob Casey,Penn Senate,2187,1778,156,253,0.3959726108824957
+Lou Barletta,Penn Senate,2598,559,185,1854,0.08314272517321042
+Neal Gale,Penn Senate,34,12,2,20,0.06629117647058824
+Dale Kerns,Penn Senate,10,2,0,8,0.08982
+#PASenate,Penn Senate,4,1,0,3,0.032
+Sheldon Whitehouse,Rhode Island Senate,416,361,11,44,0.47900456730769225
+Robert Flanders,Rhode Island Senate,4,0,0,4,0.0
+#RISenate,Rhode Island Senate,0,0,0,0,0
+Phil Bredesen,Tennessee Senate,5014,1275,2487,1252,-0.08692975668129094
+Marsha Blackburn,Tennessee Senate,34105,15421,5992,12692,0.18540911596539297
+#TNSenate,Tennessee Senate,23,2,14,7,-0.09892608695652175
+Ted Cruz,Texas Senate,111459,39642,33701,38116,0.014760203303460284
+Beto O'Rourke,Texas Senate,34926,11445,3830,19651,0.11439551337112767
+Neal Dikeman,Texas Senate,342,55,131,156,-0.16647046783625719
+#TXSenate,Texas Senate,306,60,14,232,0.04472058823529411
+Jenny Wilson,Utah Senate,41,19,6,16,0.1696317073170732
+Mitt Romney,Utah Senate,3760,1199,1195,1366,-0.006889042553190948
+#UTSenate,Utah Senate,1,1,0,0,0.636
+Bernie Sanders,Vermont Senate,18726,7963,2074,8689,0.19694829114600604
+Lawrence Zupan,Vermont Senate,271,249,10,12,0.5139391143911435
+#VTSenate,Vermont Senate,4,3,0,1,0.44267500000000004
+Tim Kaine,Virginia Senate,24101,12821,4953,6327,0.1971484544209866
+Corey Stewart,Virginia Senate,12071,5708,4821,1542,-0.09867141910363801
+Matt Waters,Virginia Senate,38,12,6,20,0.05765526315789473
+#VASenate,Virginia Senate,32,25,1,6,0.396365625
+Maria Cantwell,Washington Senate,80,44,3,33,0.23475625000000006
+Susan Hutchison,Washington Senate,138,42,10,86,0.13011594202898552
+#WASenate,Washington Senate,0,0,0,0,0
+Joe Manchin,West Virginia Senate,11987,4104,2193,5690,0.10636766497038475
+Patrick Morrisey,West Virginia Senate,1731,703,585,443,0.018863316002311337
+Rusty Hollen,West Virginia Senate,12,4,7,1,-0.06359166666666666
+#WVSenate,West Virginia Senate,4,2,0,2,0.28945
+Tammy Baldwin,Wisconsin Senate,4206,3336,331,539,0.38810836899666634
+Leah Vukmir,Wisconsin Senate,574,274,151,149,0.12436254355400687
+#WISenate,Wisconsin Senate,4,4,0,0,0.35695
+John Barrasso,Wyoming Senate,426,386,0,40,0.5168345070422533
+Gary Trauner,Wyoming Senate,11,4,0,7,0.1667181818181818
+Joe Porambo,Wyoming Senate,2,0,0,2,0.0
+#WYSenate,Wyoming Senate,1,1,0,0,0.5719
