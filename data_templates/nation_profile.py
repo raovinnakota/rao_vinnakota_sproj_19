@@ -46,7 +46,9 @@ def build_sentiment_profile(politician, collection):
             neg_tweets += 1
         ave_score += sentiment['compound']
         count += 1
-    return (ave_score/count, count)
+    if count != 0:
+        float(ave_score /= count)
+    return (ave_score, count)
 
 if __name__ == "__main__":
     client = MongoClient(MONGO_HOST)
