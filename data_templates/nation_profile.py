@@ -56,10 +56,10 @@ if __name__ == "__main__":
     misc = client.miscdb.misc
     f = open('misc_sentiment.csv', 'w+')
     f.write("Search Term, Sen_compound, house_compound, misc_compound, sen_count, house_count, misc_count\n")
-    for i in keywords:
+    for keyword in keywords:
         sen_sent, sen_count = build_sentiment_profile(keyword, senate)
         house_sent, house_count = build_sentiment_profile(keyword, house)
         misc_sent, misc_count = build_sentiment_profile(keyword, misc)
-        line = str(i) + ',' + str(sen_sent) + ',' + str(house_sent) + ',' + str(misc_sent) + ',' + str(sen_count) + ',' + str(house_count) + ',' + str(misc_count) + '\n'
+        line = str(keyword) + ',' + str(sen_sent) + ',' + str(house_sent) + ',' + str(misc_sent) + ',' + str(sen_count) + ',' + str(house_count) + ',' + str(misc_count) + '\n'
         f.write(line)
     f.close()
