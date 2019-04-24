@@ -54,7 +54,7 @@ if __name__ == "__main__":
     house = client.housedb.presort
     senate = client.senatedb.presort
     misc = client.miscdb.misc
-    f = open('misc_sentiment.csv')
+    f = open('misc_sentiment.csv', 'w+')
     f.write("Search Term, Sen_compound, house_compound, misc_compound, sen_count, house_count, misc_count\n")
     for i in keywords:
         sen_sent, sen_count = build_sentiment_profile(keyword, senate)
