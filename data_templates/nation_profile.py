@@ -47,7 +47,7 @@ def build_sentiment_profile(politician, collection):
         ave_score += sentiment['compound']
         count += 1
     if count != 0:
-        float(ave_score /= count)
+        ave_score = float(ave_score / count)
     return (ave_score, count)
 
 if __name__ == "__main__":
