@@ -46,7 +46,7 @@ def build_sentiment_profile(politician, collection):
             neg_tweets += 1
         ave_score += sentiment['compound']
         count += 1
-    return (ave_score, count)
+    return (ave_score/count, count)
 
 if __name__ == "__main__":
     client = MongoClient(MONGO_HOST)
@@ -57,6 +57,7 @@ if __name__ == "__main__":
     f = open('misc_sentiment.csv', 'w+')
     f.write("Search Term, Sen_compound, house_compound, misc_compound, sen_count, house_count, misc_count\n")
     for keyword in keywords:
+        print(keyword)
         sen_sent, sen_count = build_sentiment_profile(keyword, senate)
         house_sent, house_count = build_sentiment_profile(keyword, house)
         misc_sent, misc_count = build_sentiment_profile(keyword, misc)
