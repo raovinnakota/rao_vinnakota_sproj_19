@@ -7,7 +7,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 MONGO_HOST = 'mongodb://localhost/'
 FILE_NAME = 'races.ini'
 
-keywords = []
+keywords = ['Donald Trump', 'illegal immigration', 'border wall', 'health care', 'ACA', 'Obamacare']
 
 def section_to_dict(section, parser):
     #change path to your ini file if running locally
@@ -62,4 +62,4 @@ if __name__ == "__main__":
         misc_sent, misc_count = build_sentiment_profile(keyword, misc)
         line = str(i) + ',' + str(sen_sent) + ',' + str(house_sent) + ',' + str(misc_sent) + ',' + str(sen_count) + ',' + str(house_count) + ',' + str(misc_count) + '\n'
         f.write(line)
-    f.close() 
+    f.close()
