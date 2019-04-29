@@ -46,11 +46,11 @@
 \section{Races Collected}
 \hspace{0.2in}In the data gathering process, tweets were collected from thirty-three senate races, twenty nine house races, and a series of miscellaneous hashtags designed to capture national sentiment about the election. 
 
-After counting tweets and more, displayed below are leaderboards for house and senate. The most popular races consisted of the races with the most tweets and engagement. The Most Tweets category refers to the candidates that were tweeted about the most. The Best Liked goes to the candidate that had the highest portion of positive tweets. Least liked and Most Boring work the same way, except for Negative and Neutral tweets respectively. There was a five hundred tweet minimum to qualify for the leaderboard. 
+After counting tweets and more, displayed below are leaderboards for house and senate. The most popular races consisted of the races with the most tweets. The Most Tweets category refers to the candidates that were tweeted about the most. The Best Liked goes to the candidate that had the highest portion of positive tweets. Least liked and Most Neutral work the same way, except for Negative and Neutral tweets respectively. There was a five hundred tweet minimum to qualify for the leaderboard. 
 \begin{center}
 \begin{tabular}{ |c|c|c|c|c|c|} 
 	\hline
-	Rank & Most Popular Race & Most Tweets & Best Liked & Least Liked & Most Boring \\
+	Rank & Most Popular Race & Most Tweets & Best Liked & Least Liked & Most Neutral \\
  	\hline 
 	1 & Texas Senate & Ted Cruz & Angela Green & Josh Hawley & Tony Campbell\\
   	\hline
@@ -63,7 +63,7 @@ After counting tweets and more, displayed below are leaderboards for house and s
 \begin{center}
 \begin{tabular}{ |c|c|c|c|c|c|} 
 	\hline
-	Rank & Most Popular Race & Most Tweets & Best Liked & Least Liked & Most Boring \\
+	Rank & Most Popular Race & Most Tweets & Best Liked & Least Liked & Most Neutral \\
  	\hline 
 	1 & NY-22 & Troy Balderson & Xochitl Small & Josh Hawley & Lizzie Fletcher\\
   	\hline
@@ -73,12 +73,22 @@ After counting tweets and more, displayed below are leaderboards for house and s
 	\hline
 \end{tabular}
 \end{center}
+%Aggregate sentiment score vs the percentage of tweets that are positive 
+%The 
 
 One interesting point is that those who lead the various sentiment-based categories were no where close to the leaderboard in the most tweets category. Generally it felt that if a candidate was tweeted about more, their average sentiment score tended to drift towards neutral with the positive and negative tweets balancing out. Here is that relationship in graph form. 
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=0.5]{count_sentiment}
 \end{figure}
+
+%More content. Exact numbers on people that fall into those ranges
+%Standard deviation of the groups - speak on exact terms. Larger standard deviation in the group with smaller tweets. 
+%Make the bins smaller and plot the standard deviation
+%Address that the most neutral board is made of the percentage of neutral tweets
+
+%Lets look at the count because it's a 
+
 As the count increases, the range in sentiment scores decrease. The samples with tweet counts greater than twenty thousand all stay within a range of 0.4 on either side of neutral. Conversely, the range for sample sizes less than twenty thousand is from -0.4 all the way to 0.7. Essentially, the larger sample sizes are more balanced with a number of positive and negative tweets. That lends support to the idea that our sample isn't overly biased in one ideological direction. 
 \section{Comparing Sentiment}
 
@@ -195,18 +205,35 @@ Eight search terms were used to create a database of miscellaneous tweets. These
 	\includegraphics[scale=0.5]{misc_sent}
 \end{figure}
 
-The sentiment of partisan search terms are about the same. Non-partisan terms have sentiments within a similar range with the peculiar exception of "\#elections". The purpose of this exercise was to show that this database is mostly neutral in contrast to the house leaning democrat and the senate republican. Throughout the chapter, when we examine trends, we'll be doing so through 
+The sentiment of partisan search terms are about the same. Non-partisan terms have sentiments within a similar range with the peculiar exception of ``\#elections". The purpose of this exercise was to show that this database is mostly neutral in contrast to the house leaning democrat and the senate republican. 
 
-The three major trends we're examining are sourced from an ABC news article published on November 6th. The article identified health care, border security, and Donald Trump as three major factors heading into the midterm election. 
+The three major trends we're examining are sourced from an ABC news article published on November 6th. The article identified health care, border security, and Donald Trump as three major factors heading into the midterm election.
 
-\subsection{Donald Trump}
-The main motivation for this project \textit{was} Donald Trump. Trump was a controversial candidate and is now a controversial president. The midterms are often considered a referendum against the president. Areas which view Trump favorably should lean republican while those who don't favor him should lean democrat.
+\subsection{Exploring the Issues}
+\label{subsec:exploring the issues}
+\hspace{0.2in}The main motivation for this project \textit{was} Donald Trump. Mr. Trump was a controversial candidate and is now a controversial president. The midterms are often considered a referendum against the president. Areas which view Mr. Trump favorably should lean republican while those who don't favor him should lean democrat. Since taking office, Mr. Trump has averaged a favorability rating of forty percent while never being higher than forty-five. 
 
+Health care has had an interesting history in US Politics. In 2010, President Barack Obama passed the Affordable Care Act allowing access for millions of uninsured. Despite many Republican efforts, including a late push by congress in 2018, the ACA still stands. Several moderate Republicans avoided voting against it due to its popularity in their district/state. 
+
+According to the Kaiser Family Foundation, the ACA continues to remain a hot topic among voters. A different Pew Research poll showed that sixty percent of voters believe that health care is the government's responsibility. 
+
+The last major issue is the border wall. Mr. Trump's first campaign promise was the wall and his continued attacks on illegal immigration gained him significant support. After taking office, Mr. Trump has wielded the Immigrations and Customs Enforcement Division (ICE pronounced "ice") as a baton to round up and deport illegal immigrants. A gallup poll had just twenty percent of respondents view Illegal Immigration as ``not a problem". 
+
+These three issues are front and center, and the data set should have views about them. Having Twitter's numbers agree in some form with that of traditional pollsters shows that the data set is a fair representation of the populace. 
+
+\subsection{Evaluating Twitter's Response}
+\hspace{0.2in}There were six search terms taken from the three issues. Using modified code that can be found in Appendix B, a sentiment profile was put together. Each term was searched independently in the senate, house, and miscellaneous database. The goal was to have the three databases capture a different type of population. 
 \begin{figure}[H]
-	\includegraphics[scale=0.5]{}	
+	\includegraphics[scale=0.65]{natty_trends}	
+	\caption{Sentiment scores of search terms that describe important national trends}
+	\label{fig:natty_trends}
 \end{figure}
 
+Looking at Figure \ref{fig:natty_trends} that assumption holds up. Mr. Trump is viewed favorably in the Republican dominated Senate, while less so in the house and in general. His house sentiment may be a result of a majority of house elections had republican incumbents. His intense negative sentiment with the general populace correlates with that of his general favorability - which is below average. 
 
+On illegal immigration, it's interesting to see that Democrats took no stance. That could be because if they did, they would be in the minority. Sentiment is decidedly against illegal immigration and very much for the border wall. This is not only in the republican-dominated Senate but in the more neutral miscellaneous database. It's possible that Democrats saw a path through success by simply not addressing illegal immigration and focusing on other topics that were in their favor like health care. 
+
+In section \ref{subsec:exploring the issues} a Pew research poll was referenced regarding health care and the government. Specifically voters believed that health care was a governmental responsibility. They've echoed that sentiment here, as big fans of health care as an idea in general, but not of specifically the ACA. Notice that the ACA and Obamacare reference the same piece of legislation, but Obamacare's sentiment is noticeably lower in all three categories. That may be because of the vitriol Obama faces by Republicans and even the nation. It's clear that Obama's controversial presidency is still showing effects. So much so, that just the name on the paper makes all the difference.  
 
 \end{document}
 
