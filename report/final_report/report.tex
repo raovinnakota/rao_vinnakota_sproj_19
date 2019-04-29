@@ -671,7 +671,7 @@ This project was a first investigatory effort into the problem of election predi
 \begin{appendices}
 %%%%% Appendix A  %%%%%%%%%%%%%%%%%%
 \chapter{The How-To Guide}
-\hspace{0.2in}The following chapter is an instruction guide to recreate experiment in all parts from gathering tweets to creating simple models in Python. If you're looking for full scripts, those can be found in Appendix B. A quick disclaimer. All the instructions that follow are assuming that you are working on a UNIX system such as MacOS or Ubuntu.  
+\hspace{0.2in}The following chapter is an instruction guide to apply the scripts from Appendix B and recreate various parts of the project. If you're looking for full scripts, those can be found in Appendix B. A quick disclaimer. All the instructions that follow are assuming that you are working on a UNIX system such as MacOS or Ubuntu.  
 
 \section{Installation}
 \label{sec:install}
@@ -693,6 +693,7 @@ There are several python libraries that need to be installed for the scripts in 
 Python libraries are installed using pip. From the command line, execute the command: \begin{verbatim} pip3 install <library> \end{verbatim}
 
 \section{Gathering Tweets}
+\label{sec:collectingtweets}
 Once everything from section \ref{sec:install} is installed on your machine, use the following steps to stream tweets into a database:
 \begin{enumerate}
 	\item Create a developer account on Twitter and create an Twitter application through it. The instructions to do so are provided on https://developer.twitter.com/. Once the application is created, it will provide you with an API Key/Secret Pair. It will also provide you with a token key/secret pair. These four randomly generated strings are how the script will interact with twitter. 
@@ -716,21 +717,20 @@ Once everything from section \ref{sec:install} is installed on your machine, use
 		\end{verbatim}
 		\item In the mongo shell use the command:
 		\begin{verbatim}
-		\>show dbs
+		>show dbs
 		\end{verbatim}
 		That will output a list of the databases on the server currently. The db name from the script should be listed. 
-		\item To see the individual tweets in the database, use the following two commands in sequence. Replace db_name with the name of your database in the use command :
+		\item To see the individual tweets in the database, use the following two commands in sequence. Replace db\_name with the name of your database in the use command :
 		\begin{verbatim}
 		>use <db_name>
 		>db.stats()
 		\end{verbatim}
-		
+		The stats command will give you an overview of the database. One of the metrics is the number of objects. While the streamer is running, refresh the db.stats() command and observe the object count rising. 
 	\end{enumerate}
 \end{enumerate}
 
-\section{Building Datasets}
-
-\section{Building Models}
+\section{Building Datasets and Models}
+\hspace{0.2in} For this portion, there's little step by step guidance in terms of setup. In Appendix B instructions are included in regards to installation or set up. For any script that's building a sentiment profile or a dataset, the mongod daemon needs to be running. For scripts that are modeling such as naive\_bayes.py, the csv needs to be in the same directory as the script is running from. Those instructions are re-iterated in Appendix B. 
 
 %%%%% Appendix B %%%%%%%%%%%%%%%%%%
 \chapter{Code}
@@ -742,7 +742,7 @@ This project required a number of python scripts to be written. These scripts co
 
 \textbf{Purpose:} This script is a filled in template of the code written to stream tweets into a database. The ``misc'' in the title refers to the fact that this version of the script is streaming tweets from the list of miscellaneous search terms. It has two very similar scripts for the senate and the house. 
 
-\textbf{Execution:} It requires a server with the mongod daemon running as well as a Twitter Application with an API key/secret pair. Python packages used are Tweepy and Pymongo. Can be run directly from the command line or through an IDE. 
+\textbf{Execution:} It requires a server with the mongod daemon running as well as a Twitter Application with an API key/secret pair. Python packages used are Tweepy and Pymongo. Can be run directly from the command line or through an IDE. Explicit instructions are in Appendix \ref{sec:collectingtweets} 
 
 \textbf{Expected Output:} Will print tweets as they are streamed. Tweets themselves will be stored in the targeted database. 
 
