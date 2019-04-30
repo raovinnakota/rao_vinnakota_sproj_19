@@ -11,6 +11,7 @@
 \usepackage{cite}
 \appendixpageoff
 \usepackage{bardtex}
+\usepackage{longtable}
 
 %The following optional command allows for a change in the method of inputting the bibliography.  The options are amsrefs'' and bibtex."  If the command is not used, the default is amsrefs.''  The bibliographic entries given at the end of this file are in the amsrefs format; a different format is needed for bibtex.  See the manual for details about the bibliography.
 \biboption{bibtex}
@@ -60,22 +61,23 @@ In 2016 Donald Trump stunned the nation and not a single pollster predicted the 
 
 \dedic
 
-I dedicate this project to my family. My younger brother Abhi for his unwavering support, my mother Neelima for never letting me quit, and my father Bapi for always being there for me. 
+I dedicate this project to my family. My younger brother Abhi for his unwavering faith, my mother Neelima for never letting me quit, and my father Bapi for being there for me, even when I didn't know I needed it. 
 
 \acknowl
 
-There are a few people without whom this project wouldn't have been possible. 
+\hspace{0.2in}There are several people without whom this project wouldn't have been possible. 
 \newline
 
-To the Bard Math Department. Being a math major feels like being party of a large, crazy family. All of your endless support even if I wasn't your direct advisee can never be understated. I'm proud to be a member of this community you've fostered. Thank you. 
+To the Bard Math Department. Being a math major feels like being party of a large, crazy family. All of your endless support even if I wasn't your direct advisee can never be understated. I'm proud to be a member of this incredible community. Thank you. 
 \newline
 
 To my baseball coaches and teammates. This senior season has been a wild ride and I will never forget walking to the gym at 6 am together. 
 \newline
 
-To all my friends at Bard - both new and old. I wouldn't be the person I am today without you. Thank you. 
+To all my friends both new and old. I wouldn't be the person I am today without you. Thank you. 
+\newline
 
-To my advisor Stefan Mendez-Diez. Thank you for giving me the chance to explore an incredible topic and helping me every step of the way. From computing space to meetings to frantic revision, I couldn't have done this project without you. Thank you. 
+To my advisor Stefan Mendez-Diez. Thank you for giving me the chance to explore an incredible topic and helping me every step of the way. From computing space, to meetings, to frantic revision, I couldn't have done this project without you. Thank you. 
 \newline
 
 To my family. I wouldn't be here without your endless love and support. Abhi, Mom, and Dad, I somehow made it to graduation. Words just aren't enough. Thank You.  
@@ -88,11 +90,11 @@ To my family. I wouldn't be here without your endless love and support. Abhi, Mo
 
 A significant part of Mr. Trump's campaign was his use of social media. Trump used accounts on Twitter and Facebook as a voice to attack candidates, disseminate campaign information, and engage with voters. Mr. Trump's tweets got significant engagement with respondents voicing both support and opposition. 
 
-The large disconnect in the 2016 Presidential election was that public polling in 2016 didn’t predict the upset. In fact, it didn’t come particularly close. The latest tracking polls before election day showed Clinton in the lead with a margin of anywhere from +1 to +6\cite{gallup}. Most pollsters believed that Trump would sweep strictly conservative areas, but Clinton would every state that really mattered. Obviously, that didn’t happen
+The large disconnect in the 2016 Presidential election was that public polling in 2016 didn’t predict the upset. In fact, it didn’t come particularly close. The latest tracking polls before election day showed Clinton in the lead with a margin of anywhere from +1 to +6\cite{gallup}. Most pollsters believed that Trump had no shot, and would concede early in the night. Obviously, that didn’t happen
 
-Tweets following the election showed Trump supporters crowing that victory was inevitable, and that Trump’s social media interaction demonstrated it. Was Trump’s potential victory present on social media for people to see? 
+Tweets following the election showed Trump supporters crowing that victory was inevitable, and that Trump’s social media interaction demonstrated it. Was Trump’s potential victory present on social media for all to see? If it was, could pollsters have leveraged it to make a more accurate forecast?
 
-This project was inspired by the 2016 election and quantitatively analyzes social media to model election outcomes. Can you predict how people vote from how they tweet? To do this, tweets were collected, analyzed for opinion, and then used to model with machine learning techniques. 
+Those two questions inspired this project. The goal is to quantitatively analyze social media to model election outcomes. In layman's terms, can you predict how people vote from how they tweet? To do this, tweets were collected, analyzed for opinion, and then used to model with machine learning techniques. 
 
 \section{Political Polling - A Short Overview}
 \hspace{0.2in} The earliest iteration of polling was a straw poll conducted in Harrisburg, Pennsylvania which showed Andrew Jackson leading John Quincy Adams in the 1824 Presidential Election. Journalists from The \textit{Harrisburg Pennsylvanian} asked local voters which they preferred. Jackson winning both the polls and the election created legitimized the poll. Polls continued to be local until the early 20th century when Literary Digest sent out postcards to reader asking for their pick of the presidential election. The Literary Digest correctly predicted 5 straight elections and opinion polls reached the national stage. 
@@ -125,7 +127,7 @@ Chapter 6 reflects on the project and contemplates future work.
 Below represents a high level overview of the project from collecting tweets to making predictions:
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.5]{overview}
+	\includegraphics[scale=0.55]{overview}
 	\caption{A high level overview of the project from gathering tweets to building sentiment profiles to making predictions from modeling}
 	\label{fig:overview}
 \end{figure}
@@ -140,7 +142,7 @@ Below represents a high level overview of the project from collecting tweets to 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.75]{data_collection}
+	\includegraphics[scale=0.5]{data_collection}
 	\caption{A high level overview of the tweet collection pipeline}
 	\label{fig:datacollection}
 \end{figure}
@@ -910,6 +912,8 @@ To build the profile for the house, use house as the input instead of senate wit
 \textbf{Expected Output:} The script will print out the accuracy of the model to the console. It can be toggled with to print the output as well as the probabilities for the output (bayesian modeling returns a probability of being 1 or 0). 
 
 \lstinputlisting[language=Python]{naive_bayes.py}
+
+%%%%%%Appendix C%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{appendices}
