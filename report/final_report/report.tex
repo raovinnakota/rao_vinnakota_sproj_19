@@ -60,16 +60,29 @@ In 2016 Donald Trump stunned the nation and not a single pollster predicted the 
 
 \dedic
 
-Text of dedication.
+I dedicate this project to my family. My younger brother Abhi for his unwavering support, my mother Neelima for never letting me quit, and my father Bapi for always being there for me. 
 
 \acknowl
 
-Text of acknowledgments.
+There are a few people without whom this project wouldn't have been possible. 
+\newline
+
+To the Bard Math Department. Being a math major feels like being party of a large, crazy family. All of your endless support even if I wasn't your direct advisee can never be understated. I'm proud to be a member of this community you've fostered. Thank you. 
+\newline
+
+To my baseball coaches and teammates. This senior season has been a wild ride and I will never forget walking to the gym at 6 am together. 
+\newline
+
+To all my friends at Bard - both new and old. I wouldn't be the person I am today without you. Thank you. 
+
+To my advisor Stefan Mendez-Diez. Thank you for giving me the chance to explore an incredible topic and helping me every step of the way. From computing space to meetings to frantic revision, I couldn't have done this project without you. Thank you. 
+\newline
+
+To my family. I wouldn't be here without your endless love and support. Abhi, Mom, and Dad, I somehow made it to graduation. Words just aren't enough. Thank You.  
 
 \startmain
 
 %%%%%%%%%%%%%%%%%INTRODUCTION%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \intro
 \hspace{0.2in}Donald Trump stunned the world in 2016. Mr. Trump ran an unorthodox and polarizing campaign. Despite suffering multiple public relations setbacks, Mr. Trump still won on election night.
 
@@ -79,7 +92,7 @@ The large disconnect in the 2016 Presidential election was that public polling i
 
 Tweets following the election showed Trump supporters crowing that victory was inevitable, and that Trump’s social media interaction demonstrated it. Was Trump’s potential victory present on social media for people to see? 
 
-This project was inspired by the 2016 election and quantitatively analyzes social media to model election outcomes. Can you predict how people vote from how they tweet? To do this, tweets need to collected, analyzed for opinion, and then used to model with machine learning techniques. 
+This project was inspired by the 2016 election and quantitatively analyzes social media to model election outcomes. Can you predict how people vote from how they tweet? To do this, tweets were collected, analyzed for opinion, and then used to model with machine learning techniques. 
 
 \section{Political Polling - A Short Overview}
 \hspace{0.2in} The earliest iteration of polling was a straw poll conducted in Harrisburg, Pennsylvania which showed Andrew Jackson leading John Quincy Adams in the 1824 Presidential Election. Journalists from The \textit{Harrisburg Pennsylvanian} asked local voters which they preferred. Jackson winning both the polls and the election created legitimized the poll. Polls continued to be local until the early 20th century when Literary Digest sent out postcards to reader asking for their pick of the presidential election. The Literary Digest correctly predicted 5 straight elections and opinion polls reached the national stage. 
@@ -96,7 +109,7 @@ Social websites from the forums of the early 2000s to social media platforms tha
 This project will specifically look at political opinions expressed on the microblogging platform Twitter. What sets it apart from blogs or other political forums is their ease of use. The longform opinions that are on forums and blogs are short and un-edited in Tweets. Twitter’s mandatory message format - less than two hundred and eighty characters - makes sure posts are similar in style, and are far easier to analyze. 
 
 \section{Big Data}
-\hspace{0.2in}A decade ago, attempting to gather, clean, and analyze millions of tweets would have been a fool's errand. It's with big data techniques and packages that this project is now possible. This presents my experiment with several advantages. Unlike traditional pollsters, I won't need to design a sample, but simply collect every tweet I can find. I also will capture a different audience. 
+\hspace{0.2in}A decade ago, attempting to gather, clean, and analyze millions of tweets would have been a fool's errand. It's with big data techniques and packages that this project is now possible. This presents my experiment with several advantages. Unlike traditional pollsters, the data collection process is entirely automated and stored easily.  
 
 \section{Project Roadmap}
 \hspace{0.2in}Chapter 2 covers the data collection process. This goes through the automated tweet gathering, the storage and organization, as well as the optimization of the process. 
@@ -107,7 +120,15 @@ Chapter 4 explores the data set that was covered. It breaks down sentiment and o
 
 Chapter 5 defines the model used and demonstrates the underlying mathematics. It also covers the implementation of the model in Python, and evaluates the model's performance. 
 
-Chapter 6 reflects on the project and contemplates future work.  
+Chapter 6 reflects on the project and contemplates future work. 
+
+Below represents a high level overview of the project from collecting tweets to making predictions:
+\begin{figure}[H]
+\centering
+	\includegraphics[scale=0.5]{overview}
+	\caption{A high level overview of the project from gathering tweets to building sentiment profiles to making predictions from modeling}
+	\label{fig:overview}
+\end{figure}
 
 
 %%%%%%%%%%%%% CHAPTER 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,14 +140,14 @@ Chapter 6 reflects on the project and contemplates future work.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{data_collection}
+	\includegraphics[scale=0.75]{data_collection}
 	\caption{A high level overview of the tweet collection pipeline}
 	\label{fig:datacollection}
 \end{figure}
 
 The cloud in Figure \ref{fig:datacollection} represents all of the tweets on Twitter at any given moment. The arrow represents the streamer. The streamer is a data structure that will monitor Twitter and download all tweets that match certain keywords. Those tweets that the streamer pulls need to be stored. To do that they need to be formatted into JSON or JavaScript Object Notation. When they are, they will be inserted into a database using the management software MongoDB. 
 
-To complete all those actions in python, we'll need to use Application Package Interface (API). APIs are how scripts and other pieces of code can interact with software such as Twitter or MongoDB. Tweepy is the Twitter API and Pymongo is the Python API. 
+To complete all those actions in python, we'll need to use an Application Package Interface (API). APIs are how scripts and other pieces of code can interact with software such as Twitter or MongoDB. Tweepy is the Twitter API and Pymongo is the Python API. 
  
 To summarize, the pipeline process can be distilled into three separate tasks. 
 \begin{enumerate}
@@ -160,7 +181,7 @@ Databases offer several advantages that other storage options like Excel or CSVs
 
 Another advantage is the ability to scale a database. They are built to handle gigabytes and even terabytes of data. Excel by contrast is limited to around one million rows\cite{connolly_begg_2014}. The ability to quickly search and sort through millions of tweets as well as the flexibility to manipulate said data is something that isn't available to Excel.
 
-The question that remains is which database to use here? The database will have to deal with millions of tweets, be able to search terms quickly, and handle inconsistencies in object size. Some tweets after all have more information than others (location, images, etc.) It's been mentioned several times earlier in this chapter, but a non-relational database running MongoDB was chosen. The next section will give an overview of what MongoDB is and how it's the best choice for this project. 
+The question that remains is which database to use here? The database will have to deal with millions of tweets, be able to search terms quickly, and handle inconsistencies in object size. After all, some Tweets have more information than others (location, images, etc.) It's been mentioned several times earlier in this chapter, but a non-relational database running MongoDB was chosen. The next section will give an overview of what MongoDB is and how it's the best choice for this project. 
 
 \subsection{MongoDB}
 \hspace{0.2in} MongoDB is a popular open source non-relational database management system. It has an efficient query language as well as a well-defined API Pymongo. In a MongoDB database, each tweet is an object in JSON format. These objects are stored in collections and the collections are stored in a database\cite{mongo_docs}:
@@ -218,7 +239,7 @@ The data collection process ran through three separate scripts, each with a diff
 %%%%% Chapter 3 %%%%%%%%%%%%%%%%%%%
 \chapter{Sentiment Analysis}
 \label{ch:3}
-\hspace{0.2in}Sentiment analysis is the computational approach to evaluating text, which includes determining both sentiment (positive/negative) and intensity. There has always been an interest in the idea of sentiment analysis or objectively evaluating text for polarity. But, the field has seen a burst of activity in recent years due to a few key factors - the availability of text through the world wide web, the advance of big data, and the improvement in machine learning techniques. 
+\hspace{0.2in}Sentiment analysis is the computational approach to evaluating text, which includes determining both sentiment (positive/negative) and intensity\cite{vader}. There has always been an interest in the idea of sentiment analysis or objectively evaluating text for polarity. But, the field has seen a burst of activity in recent years due to a few key factors - the availability of text through the world wide web, the advance of big data, and the improvement in machine learning techniques. 
 
 The question of sentiment analysis's real effectiveness is often brought up. The general consensus is that a ceiling does exist for sentiment analysis, much like a ceiling exists for human analysis. There are statements where humans disagree on the sentiment. The ceiling is statements that have near unanimous agreements. If most humans can agree on a statements, it's not a stretch to assume that an algorithm could come to a similar conclusion. 
 
@@ -336,17 +357,19 @@ These profiles exist for every single candidate that participated in the electio
 \chapter{Exploring the Dataset}
 \label{ch:4}
 
-\hspace{0.2in}At the end of Chapter \ref{ch:3} we discussed building sentiment profiles for a candidate. These profiles are inspired by the profiles that many polling places create as they ask questions on their candidate. To run with the inspiration, this chapter dives into the dataset that we've created and examines if trends found in polling are reflected on twitter.  
+\hspace{0.2in}At the end of Chapter \ref{ch:3} we discussed building sentiment profiles for a candidate. These profiles are inspired by the profiles that many polling places create as they ask questions on their candidate. This chapter dives into the dataset that we've created and examines potential patterns and trends. 
 
 \section{Races Collected}
 \hspace{0.2in}In the data gathering process, tweets were collected from thirty-three senate races, twenty nine house races, and a series of miscellaneous hashtags designed to capture national sentiment about the election. 
 
-After counting tweets and more, displayed below are leaderboards for house and senate. The most popular races consisted of the races with the most tweets and engagement. The Most Tweets category refers to the candidates that were tweeted about the most. The Best Liked goes to the candidate that had the highest portion of positive tweets. Least liked and Most Boring work the same way, except for Negative and Neutral tweets respectively. There was a five hundred tweet minimum to qualify for the leaderboard. 
+The datasets built in Chapter 3 meant that we could create a large scale look at the House and Senate elections. Displayed in Table \ref{fig:senleaderboard} and Table \ref{fig:houseleaderboard} is a leaderboard of sorts displaying the top three races/candidates in several categories. 
+
+The most popular races consists of the races with the most tweets. The most popular candidates is the same, except with candidates instead of races. The Best Liked goes to the candidate that had the highest percentage of positive tweets. Least liked and Most Neutral work the same way, except for negative and neutral tweets respectively. There was a five hundred tweet minimum to qualify for the leaderboard. 
 \begin{table}[H]
 \centering
 \begin{tabular}{ |c|c|c|c|c|c|} 
 	\hline
-	Rank & Most Popular Race & Most Tweets & Best Liked & Least Liked & Most Boring \\
+	Rank & Most Popular Race & Most Popular Candidate& Best Liked & Least Liked & Most Boring \\
  	\hline 
 	1 & Texas Senate & Ted Cruz & Angela Green & Josh Hawley & Tony Campbell\\
   	\hline
@@ -362,7 +385,7 @@ After counting tweets and more, displayed below are leaderboards for house and s
 \centering
 \begin{tabular}{ |c|c|c|c|c|c|} 
 	\hline
-	Rank & Most Popular Race & Most Tweets & Best Liked & Least Liked & Most Boring \\
+	Rank & Most Popular Race & Most Popular Candidate & Best Liked & Least Liked & Most Boring \\
  	\hline 
 	1 & NY-22 & Troy Balderson & Xochitl Small & Josh Hawley & Lizzie Fletcher\\
   	\hline
@@ -374,17 +397,20 @@ After counting tweets and more, displayed below are leaderboards for house and s
 \caption{The tweet statistical overview for the House}\label{fig:houseleaderboard}
 \end{table}
 
-One interesting point is that those who lead the various sentiment-based categories were no where close to the leaderboard in the most tweets category. Generally it felt that if a candidate was tweeted about more, their average sentiment score tended to drift towards neutral with the positive and negative tweets balancing out. Here is that relationship in graph form. 
+One interesting point is that those who lead the various sentiment-based categories were no where close to the leaderboard in the most tweets category. Generally it felt that if a candidate was tweeted about more, their average sentiment score tended to drift towards neutral with the positive and negative tweets balancing out. Don't confuse this neutral score with the Most Boring category. The Most Boring category is constructed using candidates with the percentage of Neutral tweets. 
+
+Here is the tweet count, aggregate sentiment score relationship: 
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=0.5]{count_sentiment}
 	\caption{A scatterplot of tweet count and average sentiment score for all candidates}\label{fig:count_sentiment}
 \end{figure}
 As the count increases, the range in sentiment scores decrease. The samples with tweet counts greater than twenty thousand all stay within a range of 0.4 on either side of neutral. Conversely, the range for sample sizes less than twenty thousand is from -0.4 all the way to 0.7. Essentially, the larger sample sizes are more balanced with a number of positive and negative tweets. That lends support to the idea that our sample isn't overly biased in one ideological direction. 
+
 \section{Comparing Sentiment}
 
 \subsection{Winners vs Losers}
-\hspace{0.2in}The point of an election is to win. The question everyone wants to answer is how? What's separates the winners from the losers, and how is that reflected on Twitter? Let's take a look at all the features from the sentiment profiles we created in Chapter \ref{ch:3}. We'll begin with the senate. 
+\hspace{0.2in}The point of an election is to win. The question everyone wants to answer is how? What separates the winners from the losers, and how is that reflected on Twitter? Let's take a look at all the features from the sentiment profiles we created in Chapter \ref{ch:3}. We'll begin with the senate. 
 
 The graph below shows the average compound sentiment score for winning and losing Senate candidates.
 \begin{figure}[H]
@@ -392,7 +418,7 @@ The graph below shows the average compound sentiment score for winning and losin
 	\includegraphics[scale=0.5]{sen_ave_score}
 	\caption{Average sentiment score for winners and losers from the senate. The winners are in blue and the losers in red}\label{fig:sen_ave_score}
 \end{figure}
-The winning candidates are heads and shoulders above the losing candidate, and have a much better sentiment score as a whole. That feels right. Candidates that win elections are favored by the voters and that should be reflected on twitter. 
+The winning candidates are heads and shoulders above the losing candidate in average sentiment score. That sounds right. Candidates that win elections are favored and liked by the voters and that should be reflected by the average sentiment score
 
 Compound score is a combination of positive and negative tweets. If winners have a higher compound score, it stands to reason that losers will have more negative tweets than winners. The next figure breaks down the count by type of tweet - positive/negative/neutral. 
 
@@ -402,7 +428,7 @@ Compound score is a combination of positive and negative tweets. If winners have
 	\caption{Averages for total count, positive, negative, and neutral tweets from the senate. Winners are in blue. Losers are in Red}\label{fig:tweet_type}
 \end{figure}
 
-The election losers don't actually have fewer negative tweets. That's probably because there's just so many more tweets regarding winners than there are losers. To get a better view, let's break down types of tweets into percentages of the total count. That is to say, what percentage of a winner's tweets are positive, negative, or neutral?
+The election losers don't actually have fewer negative tweets. But, what they do have is far fewer tweets than winners. To see whether or not winners have a lower negative score, we should look at the percentages each type of tweets takes from the total count. This is a much more meaningful comparison as it takes into account the number of tweets winners and losers have. 
 
 \begin{figure}[H]
 \centering
@@ -410,9 +436,9 @@ The election losers don't actually have fewer negative tweets. That's probably b
 	\caption{An expansion of Figure \ref{fig:tweet_type}, taking the percentage of positive, negative, and neutral tweets for winners and losers.}\label{fig:tweet_breakdown}	
 \end{figure}
 
-A closer look shows that the real difference lies in the fact that losers have a greater portion of neutral tweets than winners do. In therms of positive and negative tweets, the portions differ by less than five percentage points. Neutral tweets have a sentiment score of zero which would dilute and lower the average compound scores. Winners are not only tweeted about more than losers, but they're more likely to have tweets that show \textit{some} sentiment. But do these patterns hold true for the house?
+A closer look shows that the real difference lies in the fact that losers have a greater portion of neutral tweets than winners do. In terms of positive and negative tweets, the portions differ by less than five percentage points. Neutral tweets have a sentiment score of zero which would dilute and lower the average compound scores. Winners are not only tweeted about more than losers, but they're more likely to have tweets that show \textit{some} sentiment.
 
-The average compound scores for winners and losers are displayed below:
+But do these patterns hold true for the house? The average compound scores for winners and losers are displayed below:
 
 \begin{figure}[H]
 \centering
@@ -429,7 +455,7 @@ Unlike the senate, the losers had a higher average sentiment score than the winn
 
 \end{figure}
 
-Winners do have more positive tweets, but the large difference in the number of negative tweets is what ultimately influences the lower average compound score seen. Unlike the senate, the house races show an even-ness when it comes to neutral tweets. These numbers are hardly conclusive, partially because the large difference in tweet count is inflating these numbers. Here's a breakdown of the tweet portions:
+Winners do have more positive tweets, but the large difference in the number of negative tweets is what ultimately influences the lower average compound score seen. Unlike the senate, the house races show an even-ness when it comes to neutral tweets. These numbers are hardly conclusive, partially because the large difference in tweet count is inflating these numbers. Here's a breakdown of the tweet percentages:
 
 \begin{figure}[H]
 \centering
@@ -437,10 +463,14 @@ Winners do have more positive tweets, but the large difference in the number of 
 	\caption{An expansion of Figure \ref{fig:house_tweet_type}, taking the percentage of positive, negative, and neutral tweets for winners and losers.}\label{fig:house_tweet_breakdown}	
 \end{figure}
 
-The house and the senate winners both roughly have 30\% of their tweets designated neutral. The real difference is that negative tweets occupy a far higher proportion of tweets. It doesn't feel that positive and negative tweets have a distinguishable effect on winning. In fact, the only trend that holds across both house and senate winners is the fact that winners are just tweeted about more. The house had a ratio of about 2-to-1 while the senate had 3-to-1. Bottom line, positive tweets are preferred, but overall engagement is key. 
+The house and the senate winners both roughly have 30\% of their tweets designated neutral. The real difference is that negative tweets occupy a far higher proportion of tweets. It doesn't feel that positive and negative tweets have a distinguishable effect on winning. 
+
+A major trend that held across both house and senate winners is the fact that winners are tweeted about more. The house had a ratio of about 2-to-1 while the senate had 3-to-1. Candidates that are being talked about more are likely to be on people's minds, both good and bad. Bottom line, positive tweets are preferred, but overall engagement is key. 
+
+Senate and house races are more local and don't often engage all eligible voters in the United States. It would be interesting to see if the trend of ``more tweets implying more likely to win'' holds for a Presidential Election, which is closely followed with lots of voter engagement. 
 
 \subsection{Democrats vs Republicans}
-The two party system is a large part of our election process. The parties command massive influence and many voters choose a candidate based entirely on party affiliation. This means that a party's national platform and performance can influence their performance in more local elections like the house and the senate. 
+\hspace{0.2in}The two party system is a large part of our election process. The parties command massive influence and many voters choose a candidate based entirely on party affiliation. This means that a party's national platform and performance can influence their performance in more local elections like the house and the senate. 
 
 In the house races tracked, the Democrats flipped twenty-one seats which undoubtedly played a large role in their retaking of the House. In the Senate, the Republicans held the majority thanks to the uneven split in seats up for election. In fact, they managed to flip three Democratic seats, allowing them to increase their majority. 
 
@@ -572,24 +602,25 @@ The specific problem in question is a binomial classification problem. Each inpu
 \subsection{Bayes Theorem}
 
 \begin{theorem}[Bayes Theorem of Conditional Probability]
-Given that you have an object with feature $A$ and a class $B$, the probability that the object belongs to class $B$ based on observation $A$ is:
+Given that you have an object with feature $A$ and a class $B$, the probability that the object belongs to class $B$ based on the feature $A$ is:
 \begin{equation}
 \label{eq:bayes}
 P(A|B) = \dfrac{P(B|A)P(A)}{P(B)}
 \end{equation}
 \end{theorem}
 
-A Bayesian classifier uses that theorem and extends it to make a prediction. Imagine that there are classes $A$ and $B$ and an object with observation $x$. 
+A Bayesian classifier uses that theorem and extends it to make a prediction. Imagine that there are classes $A$ and $B$ and an object with feature $x$.  
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=0.5]{bayes}
 	\caption{A demonstration of how Gaussian Naive Bayes operates \cite{researchgate_2013}}\label{fig:bayes}
 \end{figure}
-The classifier uses Bayes Theorem, calculates $P(x|A)$ and $P(x|B)$ before making a decision based on the resulting probabilities. This example used one observation with two classes. What happens in the case where you have more than one observation? That's the problem the Naive Bayes classifier solves. 
+The classifier uses Bayes Theorem, calculates $P(x|A)$ and $P(x|B)$ before making a decision based on the resulting probabilities. There are multiple methods to calculate conditional probability and Figure \ref{fig:bayes} assumes that the probabilities for each event are distributed normally. 
+
+Bayesian classification seems straight forward when you have just one feature to classify. What happens in the case where you have more than one feature? That's the problem the Naive Bayes classifier solves. 
 
 \subsection{Naive Bayes Classifier}
-
-The classifier assumes that each parameter is independent from the other. Given a set of observations $d = \{d_1, d_2, \dots, d_n\}$ and a class $c_j$, the probability that $d$ came from $c_j$ is:
+\hspace{0.2in}The Naive Bayes classifier classifies objects with multiple features into classes. The classifier assumes that each feature is independent from the other. Given a set of features $d = \{d_1, d_2, \dots, d_n\}$ and a class $c_j$, the probability that $d$ came from $c_j$ is:
 \begin{equation}
 \label{eq:naivebayes}
 P(d|c_j) = P(d_1|c_j) \cdot P(d_2|c_j) \cdot \ldots \cdot P(d_n|c_j)
@@ -599,22 +630,28 @@ which can be simplified to:
 \label{eq:simnaivebayes}
 P(d|c_j) = \prod^{n}_{i=1} P(d_i|c_j)
 \end{equation}
-This process repeats for all possible classes and the decision is the class with the highest probability. Thus we obtain the following classification rule:
+This process repeats for all possible classes and the classifier chooses the class with the largest conditional probability. Thus we obtain the following classification rule to determine the class $\hat{c}$ for an object with a set of features $d$:
 \begin{equation}
 \label{eq:classrule}
 P(c_j | d_1,\dots,d_n) \propto P(c_j) \prod^{n}_{i=1} P(d_i | c_j) \implies \hat{c} = \text{arg}\max_{c_j}P(c_j)\prod^{n}_{i=1}P(d_i | c_j)
 \end{equation}
-%move this before
-This rule determines the class $\hat{c}$ by choosing the class that maximizes probability. In this particular case, those classes are winning and losing an election. 
+In this project, we have two defined classes. Class 1 is losing and class 2 is winning. Every candidate will be classified as a winner or a loser based on their sentiment profile. 
 
-There are several types of Naive Bayes classifiers. The one that we employed is the Guassian Naive Bayes. It's designed for models where the parameters have continuous input. Using this model changes the way we calculate the conditional probability. With continuous input, we assume the probability to lie on a normal distribution. Keeping the same terminology as equation \ref{eq:naivebayes} we find $P(d_i | c_j)$ as such:
+Before we can move on to implement a classifier, we have to choose exactly which classifier we need. There are several types of Naive Bayes classifiers and the one we will use is Guassian Naive Bayes. Figure \ref{fig:bayes} is a visual example of a Gaussian Naive Bayes classifier. 
+
+Gaussian Naive Bayes is designed for models with continuous parameters. To account for that will require changing the method of calculating conditional probability. With continuous input, we assume the probability to lie on a normal distribution. Keeping the same terminology as equation \ref{eq:naivebayes} we find $P(d_i | c_j)$ as such:
 \begin{equation}
 \label{eq:gaussprob}
 P(d_i | c_j) = \dfrac{1}{\sqrt{2\pi\sigma^{2}_{c_j}}}\exp\left(\dfrac{(d_i - \mu_{c_j})^2}{2\sigma^{2}_{c_j}}\right)
 \end{equation}
 The parameters $\sigma_{c_j}$ and $\mu_{c_j}$ are estimated using maximum likelihood. 
 
-The Naive Bayes is the optimal solution given the constraints of the problem. First, the classification problem means that the optimal solution is either a neural network, logistic regression, or Naive Bayes. The chosen approach has limited the size of our dataset. Instead of the three million tweets, the inputs are the hundred and fifty candidates. For smaller data sets, the Naive Bayes has been shown to outperform other models\cite{zhang2004,hand2001idiot}. Both regression and a neural network in crude terms weight their parameters to produce a final result. To ensure accurate weights, the training data needs to be extensive, something not available to us currently. The Naive Bayes probability based approach will take advantage of an unbiased dataset regardless of its size. 
+
+\subsection{Why Naive Bayes?}
+\hspace{0.2in} The Naive Bayes is the optimal solution given the constraints of the problem. First, the classification problem means that the optimal solution is either a neural network, logistic regression, or Naive Bayes. The chosen approach has limited the size of our dataset. Instead of the three million tweets, the inputs are the hundred and fifty candidates. For smaller data sets, the Naive Bayes has been shown to outperform other models\cite{zhang2004,hand2001idiot}. Both regression and a neural network in crude terms weight their parameters to produce a final result. To ensure accurate weights, the training data needs to be extensive, something not available to us currently. 
+
+The Naive Bayes as explained in section 5.3.2 works off of the probability distribution in the sentiment profiles. Those profiles are created from over two million tweets. The large sample size means that it's likely that the profiles are distributed normally which will improve the accuracy and effectiveness of a Naive Bayes classifier. 
+
 
 \section{Implementation Naive Bayes in Python}
 \hspace{0.2in}The python library Sci-Kit Learn contains a variety of machine learning models. The machine learning can be imported from Sci-Kit, fitted with training data, and then tested using their predict method. Importing the library is done through the import statement.
@@ -629,10 +666,13 @@ import pandas as pd
 pd.read_csv(FILE_NAME)
 \end{verbatim}
 
-The dataframe is sliced into data and labels. Data is the parameters that the algorithm will read and weight. These parameters include Tweet Count, Positive Tweets, Average Compound Sentiment Score, etc. Labels are the answers for the algorithm to check itself against. Did the candidate win or lose. To allow the algorithm to process the label, winning is a 1 and losing is a 0. Both the training and testing sets have a data and label variable. 
+The dataframe is sliced into data and labels. Data is the parameters that the algorithm will read and weight. These parameters include Tweet Count, Positive Tweets, Average Compound Sentiment Score, etc. Labels are the answers for the algorithm to check itself against. Did the candidate win or lose. To allow the algorithm to process the label, winning is a 1 and losing is a 0. 
+
+Both the training and testing sets have a data and label variable. To ensure an unbiased model, we'll randomly select the training and the testing set. 
 \begin{verbatim}
-train_data = np.asarray(senate.loc[:70, `Count':`Average Compound'])
-train_labels = np.asarray(senate.loc[70:, `Winner')])
+test_delim = int(0.75 * senate.shape[0])
+train_data = np.asarray(senate.loc[:test_delim, 'Count':'Party'])
+train_labels = np.asarray(senate.loc[:test_delim, 'Winner'])
 \end{verbatim}
 You'll notice that the inputs to the algorithm are all arrays of integers. Even when dealing with text, data needs to be tokenized or shaped into integers that can be organized into arrays for the algorithm to process. Shaping the information and then understanding the output is on the user. 
 
@@ -659,34 +699,34 @@ With the ability to predict, we can now evaluate the effectiveness of Naive Baye
 	\caption{A sample confusion matrix that outlines the four possible outcomes from a prediction}\label{fig:confusion_matrix}
 \end{figure}
 
-The confusion matrix outlines the four potential outcomes for any prediction - true/false positives and true/false negatives. These have been used in the medical field for decades when assessing false positives, and gained popularity in machine learning in the 1980's\cite{fawcett}. 
+The confusion matrix outlines the four potential outcomes for any prediction - true/false positives and true/false negatives. These have been used in the medical field for decades when assessing false positives, and gained popularity in machine learning in the 1980's\cite{fawcett}. \textbf{True positives} and \textbf{true negatives} are when both the predicted output and the actual result are positive and negative respectfully. \textbf{False positives} are when the model predicts positive while the actual result is negative. \textbf{False negatives} are when the algorithm predicts negative while the actual result is positive. 
 
 \subsection{Criteria}
 \label{subsec:criteria}
 \hspace{0.2in} The confusion matrix provides the base for four criteria to evaluate the model. These are precision, accuracy, recall, and f1\cite{vader, fawcett}.
 
-Precision is the ratio of true positives to the sum of true positives and false positives. This is a metric of how often the model is right given that it predicts a candidate to win. It's an important metric because it evaluates the power of the model in regards to predicting a winner. 
+\textbf{Precision} is the ratio of true positives to the sum of true positives and false positives. This is a metric of how often the model is right given that it predicts a candidate to win. It's an important metric because it evaluates the power of the model in regards to predicting a winner. 
 
 \begin{equation}
 \label{eq:precision}
 PRECISION = \dfrac{TP}{TP+FP}
 \end{equation}
 
-Recall is the ratio of true positives to the sum of true positives and false negatives. It's a good measure of how well the algorithm covers actual positive values. 
+\textbf{Recall} is the ratio of true positives to the sum of true positives and false negatives. It's a good measure of how well the algorithm covers actual positive values. 
 
 \begin{equation}
 \label{eq:recall}
 RECALL = \dfrac{TP}{TP+FN}
 \end{equation}
 
-Accuracy is the ratio of true positives to total items in the test set, It's an overall measure of how good the model is. On it's own it's an incomplete metric, but it fits in quite well with the other four. 
+\textbf{Accuracy} is the ratio of true positives to total items in the test set, It's an overall measure of how good the model is. On it's own it's an incomplete metric, but it fits in quite well with the other four. 
 
 \begin{equation}
 \label{eq:accuracy}
 ACCURACY = \dfrac{TP+TN}{TP+TN+FP+FN}
 \end{equation}
 
-Last, the f1 score is the weighted average of the precision and recall. It takes false positives and false negatives into account. 
+Last, the \textbf{f1 score} is the weighted average of the precision and recall. It takes false positives and false negatives into account. 
 
 \begin{equation}
 \label{eq:f1}
@@ -694,7 +734,7 @@ F1 = 2 \cdot \dfrac{PR \cdot RE}{PR + RE}
 \end{equation}
 
 \subsection{Performance}
-\hspace{0.2in} To test the model, the data is split into training and testing. First the rows are shuffled and then 75\% of the data goes to training while the other 25\% goes to testing. Here is the resulting confusion matrix from that split:
+\hspace{0.2in} To test the model, the data is split into training and testing. First the rows are shuffled and then 75\% of the data goes to training while the other 25\% goes to testing. Here is the resulting confusion matrix from one run of the model:
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -708,7 +748,7 @@ F1 = 2 \cdot \dfrac{PR \cdot RE}{PR + RE}
 \end{tabular}
 \caption{The confusion matrix that resulted from running the model on the testing data}\label{fig:out_confusion_matrix}
 \end{table}
-From those, we can calculate the metrics outlined in Section \ref{subsec:criteria}:
+From those, we can calculate the metrics outlined in Section \ref{subsec:criteria}. But, to ensure that the results are unbiased we'll run the model ten times, randomly splitting the test and the training set each time. The metrics listed below are averages from those runs. 
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -719,7 +759,7 @@ From those, we can calculate the metrics outlined in Section \ref{subsec:criteri
 	\hline
 	Accuracy & 0.763\\
 	\hline
-	Recall & 0.33 \\
+	Recall & 0.31 \\
 	\hline
 	F1 & 0.458 \\
 	\hline
@@ -727,9 +767,12 @@ From those, we can calculate the metrics outlined in Section \ref{subsec:criteri
 \caption{Resulting metrics using the values from Table \ref{fig:out_confusion_matrix}}\label{fig:metrics}
 \end{table}
 
-These results are encouraging - particularly the positive precision. Essentially, when the model does decide to predict a positive result, it is likely to be right. It's clear that the model we've implemented is conservative. The significant number of false negatives combine with the low number of false positives shows that the model only predicts positive when a significant amount of evidence shows it to be true. 
+It's important to keep in mind that this isn't a model predicting any one specific election but rather any election. Randomly splitting the data into training and testing set means that results we get are results that cover the entire dataset. What these results mean is that when this model predicts any election, it is right seventy-five percent of the time. 
 
-The weak recall is potentially a reaction to class imbalance. The negative prediction rate is 0.76. If a larger test set with better balance was included, the greater number of true positives would push the recall higher. 
+Additionally, the precision score is encouraging. It shows that the when the model does choose to predict a positive result, it's often right. Not to mention, it's often right in general. The low recall and f1 score are worrying, but potentially misleading. 
+
+Since only one candidate can win an election and some elections have more than two candidates, there is a class imbalance. That means that it is likely that there are more false negatives than true positives which will lower the recall and consequently the f1 score. But, the negative prediction rate (ratio of true negatives to the sum of true and false negatives) is 0.76 which batches the precision/positive prediction rate. What this means is that if the test set were perfectly balanced, it's likely that the recall and the f1 are significantly larger. 
+
 
 %%%%%%%Chapter 6%%%%%%%%%%%%%%%%%
 \chapter{Conclusion}
