@@ -1,0 +1,190 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsthm, amsmath, amsfonts}
+\usepackage{fancybox, multicol}
+\usepackage{graphicx}
+\usepackage{type1cm, color, array}
+\usepackage{verbatim}
+\usepackage{url}
+
+\usepackage{bardtex}
+
+%The following optional command allows for a change in the method of inputting the bibliography.  The options are ``amsrefs'' and ``bibtex."  If the command is not used, the default is ``amsrefs.''  The bibliographic entries given at the end of this file are in the amsrefs format; a different format is needed for bibtex.  See the manual for details about the bibliography.
+\biboption{amsrefs}
+
+\styleoption{poster}
+
+\usepackage{fourier}
+
+%The following three optional commands change the colors in the poster; if you want to change the default colors, use any or all of these three commands by removing the % symbols, and inserting your choice of colors.  See the manual for details about colors in posters.
+%\boxcolor{Mulberry}
+%\toptitlecolor{RedViolet}
+%\boxtitlecolor{BlueViolet}
+
+%The following three optional commands insert figures to the left and/or right of the title box; if you want to insert such figures, use either the first command (for the same figure on both sides of the title box), or one or both of the second and third commands (for a figure on only one side of the title box, or for different figures on the two sides).  See the manual for details these commands.
+%\leftrightlogo{math_prog_logo.pdf}
+%\leftlogo{math_prog_logo.pdf}
+%\rightlogo{math_prog_logo.pdf}
+
+%The following optional command allows the replacement of the word ``adviser'' in the poster top with one of ``advisers,'' ``advisor'' or ``advisors."  If the command is not used, the default is ``adviser.''
+%\adviseroption{adviser}
+
+%The following optional command allows the replacement of the word ``program'' in the program top with ``programs."  If the command is not used, the default is ``program.''
+%\programoption{program}
+
+%The following optional command allows for a change in the style of the poster.  The options are ``styleone,'' ``styletwo,'' ``stylethree'' or ``stylefour."  If the command is not used, the default is ``styleone.''
+\posterstyle{styleone}
+
+%Your macros, if you have any.
+
+\begin{document}
+
+\begin{posterbard}
+
+%\postertop {Senior Project Posters in LaTeX }{Helga Homology}{Mathematics}{May 2099}{Calvin Calculus}
+
+%scale values 1 -> 2 without logo
+%scale values 1 -> 1.6 with math_prog_logo.pdf logos, or other logos that have roughly the same height and width
+\postertopscale {Senior Project Posters in LaTeX}{Helga Homology}{Mathematics}{May 2099}{Calvin Calculus}{1}
+
+\begin{posterboxabstract} 
+The first text box in the poster should contain the abstract. The abstract should state the goals and motivation of the project, and should be accessible to a general science audience.
+\end{posterboxabstract}
+
+\begin{posterboxtitle}{Another Text Box}
+These posters can have as many text boxes as desired, as long as all the boxes fit on one page.  The pages for these posters are 42" x 42".
+
+Each text box can have an optional heading, or the heading can be left blank, as in the next text box.  Headings can be colored, or left in black text.
+\end{posterboxtitle}
+
+\begin{posterboxtitle}{Citing References}
+The way references are cited in a poster is exactly the same way you cite references in any \LaTeX\ document, for example \cite{CALCULUS}, \cite{PROJECT} and \cite{HOMOLOGY}.
+\end{posterboxtitle}
+
+\begin{posterboxnotitle}
+It is possible to make a box with no title.  That is not generally a good idea, but it can be done if needed.
+\end{posterboxnotitle}
+
+
+\begin{posterboxnotitle}
+It is possible to use color for the text, for example \textcolor{SpringGreen}{SpringGreen} and \textcolor{WildStrawberry}{WildStrawberry}.
+It is even possible to have the bullets and numbers in lists be colored:
+
+\begin{enumeratec}{Cyan}
+\item Peter
+\item Wendy
+\end{enumeratec}
+
+and
+
+\begin{itemizec}{Magenta}
+\item Peter
+\item Wendy.
+\end{itemizec}
+\end{posterboxnotitle}
+
+
+\begin{posterboxtitle}{Theorems, Proofs, Etc.}
+It is also possible to have theorems, proofs, definitions, and the like in text boxes.  These constructions are formatted precisely as in bardproj.sty (though the automatic numbering works differently, without chapters or sections, which should not be used in posters).
+\end{posterboxtitle}
+
+
+\begin{posterboxtitle}{A Very Nice Theorem}
+\thm\label{thmAA} 
+Let $\func fAB$ be a function.
+%
+\enum 
+\item[(1)] If $f$ has an inverse, then the inverse is unique.
+%
+\item[(2)] If $f$ has a right inverse $g$ and a left inverse $h$, then $g = h$; hence $f$ has an inverse.
+%
+\item[(3)] If $f$ has an inverse $g$, then $g$ has an inverse, which is $f$.
+\eenum
+\ethm
+ 
+\demo
+(1). Suppose that $\func {g, h}BA$ are both inverses of $f$.  We will show that $g = h$.  By hypothesis on $g$ and $h$ we know, among other things, that $f \circ g = 1_B$ and $h \circ f = 1_A$.  Using a previous lemma we see that
+%
+\[
+g  =  1_A \circ g  =  (h \circ f) \circ g  =  h \circ (f \circ g)  =  h \circ 1_B  =  h.
+\]
+
+\noindent (2). The proof is virtually the same as in Part~(1).  
+\spce
+
+\noindent (3).  Since $\func gBA$ is an inverse of $f$, then $g \circ f = 1_A$ and $f \circ g = 1_B$.  By the definition of inverses, it follows that $f$ is an inverse of $g$.  By Part~(1) of this theorem, we know that $f$ is the unique inverse of $g$.
+\edemo
+\end{posterboxtitle}
+
+
+\begin{posterboxnotitle}
+The usual method for referencing theorems and the like in LaTeX works in posters as well.  For example, we can refer here to Theorem~\ref{thmAA}, even though that theorem was in a different text box.
+\end{posterboxnotitle}
+
+
+\begin{posterboxtitle}{Verbatim}
+For writing computer code, the \verb@verbatim@ environment can be used, for example to obtain
+
+\begin{verbatim}
+The verbatim             environment preserves
+      spaces             and indentations, and          
+              uses a typewriter style font
+      (for those who remember typewriters).
+\end{verbatim}
+\end{posterboxtitle}
+
+
+\begin{posterboxtitle}{Figures}
+Whenever possible, insert figures to aid the reader.  Always refer to the figures in the text.  We see the logo of the Mathematics Program at Bard in Figure~1.
+
+\begin{center}
+\includegraphics[scale=0.75]{math_prog_logo.pdf}\\
+Figure 1: The Bard Mathematics Program Logo
+\end{center}
+\end{posterboxtitle}
+
+
+\begin{posterboxnotitle}
+The Bard \TeX\ Style file, which includes various templates and samples, among them the source file for this poster, and a manual for using the style file, may be found at \url{http://faculty.bard.edu/bloch/tex/}.
+\bigskip
+
+For additional help, or for suggestions or corrections,
+contact Ethan Bloch at bloch@bard.edu
+\bigskip
+
+Thank you to Todd Johnson for a great deal of help with making these posters.
+\end{posterboxnotitle}
+
+
+\begin{bibliog}
+
+\bib{CALCULUS}{article}{
+author = {Calculus, Cathy},
+title = {Why everyone should love calculus},
+journal = {Journal of Fun Mathematics},
+volume = {314},
+date = {2099},
+pages = {100--101}
+}
+
+\bib{PROJECT}{report}{
+author = {Fractal, Fred},
+author = {Graph, Germaine},
+title = {How to Write a Great Senior Project in Mathematics},
+date = {2099},
+eprint = {http://www.www.www.edu}
+}
+
+\bib{HOMOLOGY}{book}{
+author = {Homology, Harold},
+title = {Algebraic Topology for Dummies},
+publisher = {Math Lights},
+address = {Simplicialville, NY},
+date = {2099}
+}
+
+\end{bibliog}
+
+\end{posterbard}
+
+\end{document}
+
